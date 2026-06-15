@@ -311,6 +311,71 @@ button.active-key { transform: scale(0.95); box-shadow: 0 0 20px rgba(138,43,226
     #mode-scientific .standard-section button { font-size: 0.7rem; padding: 8px 3px; }
     .precision-display .result-text { font-size: 1rem; }
 }
+
+/* Tool Calculators */
+#mode-fraction { max-width: 540px; }
+#mode-percent { max-width: 500px; }
+#mode-random { max-width: 520px; }
+#mode-error { max-width: 480px; }
+.fraction-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px; align-items: center; margin-bottom: 12px; }
+.fraction-grid .frac { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.fraction-grid .frac input { width: 100%; padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(10,10,20,0.6); color: var(--text-primary); font-family: 'Share Tech Mono', monospace; font-size: 1rem; text-align: center; outline: none; -moz-appearance: textfield; }
+.fraction-grid .frac input:focus { border-color: var(--accent-purple); }
+.fraction-grid .frac input::-webkit-outer-spin-button, .fraction-grid .frac input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.fraction-grid .frac-line { width: 100%; height: 2px; background: var(--accent-blue); border-radius: 1px; }
+.fraction-grid .frac-op { font-size: 1.5rem; color: var(--accent-blue); font-weight: 700; padding: 0 4px; }
+.fraction-op-select { display: flex; gap: 6px; margin-bottom: 12px; justify-content: center; }
+.fraction-op-select button { padding: 8px 16px; font-size: 0.85rem; min-width: 48px; background: rgba(40,40,60,0.5); }
+.fraction-op-select button.active-op { background: linear-gradient(135deg, rgba(0,191,255,0.5), rgba(30,144,255,0.5)); border-color: var(--accent-blue); }
+.fraction-result { background: rgba(10,10,20,0.6); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px 20px; margin-top: 12px; min-height: 80px; }
+.fraction-result .frac-result-main { font-family: 'Share Tech Mono', monospace; font-size: 1.8rem; color: var(--accent-blue); text-align: center; word-wrap: break-word; }
+.fraction-result .frac-result-decimal { font-family: 'Share Tech Mono', monospace; font-size: 0.9rem; color: var(--text-secondary); text-align: center; margin-top: 4px; }
+.fraction-extra { display: flex; gap: 12px; margin-top: 12px; flex-wrap: wrap; }
+.fraction-extra .fe-group { flex: 1; min-width: 140px; }
+.fraction-extra .fe-group label { display: block; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 4px; }
+.fraction-extra .fe-group input { width: 100%; padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(10,10,20,0.6); color: var(--text-primary); font-family: 'Share Tech Mono', monospace; font-size: 0.9rem; outline: none; -moz-appearance: textfield; }
+.fraction-extra .fe-group input:focus { border-color: var(--accent-purple); }
+.fraction-extra .fe-group input::-webkit-outer-spin-button, .fraction-extra .fe-group input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.fraction-extra .fe-row { display: flex; gap: 6px; align-items: center; }
+.fraction-extra .fe-row button { padding: 6px 14px; font-size: 0.8rem; }
+.frac-simplify-btn { padding: 6px 14px; font-size: 0.8rem; background: rgba(0,191,255,0.3); }
+
+.percent-mode-select { display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap; }
+.percent-mode-select button { padding: 8px 14px; font-size: 0.8rem; background: rgba(40,40,60,0.5); flex: 1; min-width: 80px; }
+.percent-mode-select button.active-op { background: linear-gradient(135deg, rgba(0,191,255,0.5), rgba(30,144,255,0.5)); border-color: var(--accent-blue); }
+.percent-fields { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
+.percent-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.percent-row label { font-size: 0.85rem; color: var(--text-secondary); min-width: 30px; }
+.percent-row input { flex: 1; min-width: 60px; padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(10,10,20,0.6); color: var(--text-primary); font-family: 'Share Tech Mono', monospace; font-size: 0.95rem; outline: none; -moz-appearance: textfield; }
+.percent-row input:focus { border-color: var(--accent-purple); }
+.percent-row input::-webkit-outer-spin-button, .percent-row input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.percent-row .pct-label { font-size: 0.85rem; color: var(--accent-blue); min-width: 20px; text-align: center; }
+.percent-row .pct-eq { font-size: 1.2rem; color: var(--text-secondary); }
+.percent-result { background: rgba(10,10,20,0.6); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px 20px; text-align: center; font-family: 'Share Tech Mono', monospace; font-size: 1.5rem; color: var(--accent-blue); min-height: 60px; }
+.percent-result .pct-sub { font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px; }
+
+.random-controls { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
+.random-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.random-row label { font-size: 0.85rem; color: var(--text-secondary); min-width: 80px; }
+.random-row input[type="number"] { flex: 1; min-width: 60px; padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(10,10,20,0.6); color: var(--text-primary); font-family: 'Share Tech Mono', monospace; font-size: 0.95rem; outline: none; -moz-appearance: textfield; }
+.random-row input[type="number"]:focus { border-color: var(--accent-purple); }
+.random-row input[type="number"]::-webkit-outer-spin-button, .random-row input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
+.random-row input[type="checkbox"] { accent-color: var(--accent-purple); width: 16px; height: 16px; cursor: pointer; }
+.random-row select { padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(10,10,20,0.6); color: var(--text-primary); font-size: 0.85rem; outline: none; cursor: pointer; }
+.random-gen-btn { padding: 10px 24px; font-size: 0.9rem; background: linear-gradient(135deg, rgba(0,191,255,0.6), rgba(30,144,255,0.6)); align-self: center; }
+.random-results { background: rgba(10,10,20,0.6); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px 20px; max-height: 250px; overflow-y: auto; margin-top: 8px; font-family: 'Share Tech Mono', monospace; font-size: 0.9rem; color: var(--accent-blue); line-height: 1.6; }
+
+.error-fields { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
+.error-fields .error-row { display: flex; gap: 8px; align-items: center; }
+.error-fields .error-row label { font-size: 0.85rem; color: var(--text-secondary); min-width: 110px; }
+.error-fields .error-row input { flex: 1; padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(10,10,20,0.6); color: var(--text-primary); font-family: 'Share Tech Mono', monospace; font-size: 0.95rem; outline: none; -moz-appearance: textfield; }
+.error-fields .error-row input:focus { border-color: var(--accent-purple); }
+.error-fields .error-row input::-webkit-outer-spin-button, .error-fields .error-row input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.error-calc-btn { padding: 10px 24px; font-size: 0.9rem; background: linear-gradient(135deg, rgba(0,191,255,0.6), rgba(30,144,255,0.6)); align-self: center; }
+.error-results { background: rgba(10,10,20,0.6); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px 20px; margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+.error-results .er-row { display: flex; justify-content: space-between; font-family: 'Share Tech Mono', monospace; font-size: 0.9rem; padding: 4px 0; }
+.error-results .er-row .er-label { color: var(--text-secondary); }
+.error-results .er-row .er-value { color: var(--accent-blue); font-weight: 600; }
 </style>
 </head>
 <body>
@@ -340,6 +405,22 @@ button.active-key { transform: scale(0.95); box-shadow: 0 0 20px rgba(138,43,226
             <a class="nav-item" data-mode="precision">
                 <div class="nav-icon">∞</div>
                 <span>Precision</span>
+            </a>
+            <a class="nav-item" data-mode="fraction">
+                <div class="nav-icon">a/b</div>
+                <span>Fraction</span>
+            </a>
+            <a class="nav-item" data-mode="percent">
+                <div class="nav-icon">%</div>
+                <span>Percent</span>
+            </a>
+            <a class="nav-item" data-mode="random">
+                <div class="nav-icon">🎲</div>
+                <span>Random</span>
+            </a>
+            <a class="nav-item" data-mode="error">
+                <div class="nav-icon">±</div>
+                <span>Error</span>
             </a>
         </nav>
         <div class="sidebar-footer">CalcHub v2.0</div>
@@ -558,6 +639,162 @@ button.active-key { transform: scale(0.95); box-shadow: 0 0 20px rgba(138,43,226
                     <button class="btn-fn" data-fn="e">e</button>
                     <button class="btn-fn" data-fn="pow">xʸ</button>
                     <button class="btn-eq" data-fn="equals">=</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fraction Calculator -->
+        <section id="mode-fraction" class="mode-section">
+            <div class="calculator-body">
+                <h3 style="font-size:0.9rem;font-weight:600;margin-bottom:12px;color:var(--accent-blue);">Fraction Calculator</h3>
+                <div class="fraction-op-select">
+                    <button class="active-op" data-op="+">+</button>
+                    <button data-op="-">−</button>
+                    <button data-op="*">×</button>
+                    <button data-op="/">÷</button>
+                </div>
+                <div class="fraction-grid">
+                    <div class="frac">
+                        <input type="number" id="frac-n1" value="1">
+                        <div class="frac-line"></div>
+                        <input type="number" id="frac-d1" value="2">
+                    </div>
+                    <div class="frac-op" id="frac-op-display">+</div>
+                    <div class="frac">
+                        <input type="number" id="frac-n2" value="1">
+                        <div class="frac-line"></div>
+                        <input type="number" id="frac-d2" value="3">
+                    </div>
+                </div>
+                <div class="fraction-result">
+                    <div class="frac-result-main" id="frac-result">5/6</div>
+                    <div class="frac-result-decimal" id="frac-decimal">≈ 0.833333</div>
+                </div>
+                <div class="fraction-extra">
+                    <div class="fe-group">
+                        <label>Simplify Fraction</label>
+                        <div class="fe-row">
+                            <input type="number" id="frac-simp-n" placeholder="Num">
+                            <span style="color:var(--text-secondary);">/</span>
+                            <input type="number" id="frac-simp-d" placeholder="Den">
+                            <button class="frac-simplify-btn" id="frac-simplify">Simplify</button>
+                        </div>
+                        <div style="font-family:'Share Tech Mono',monospace;font-size:0.85rem;color:var(--accent-blue);margin-top:4px;" id="frac-simp-result"></div>
+                    </div>
+                    <div class="fe-group">
+                        <label>Decimal → Fraction</label>
+                        <div class="fe-row">
+                            <input type="number" id="frac-decimal-in" value="0.75" step="any">
+                            <button class="frac-simplify-btn" id="frac-to-frac">Convert</button>
+                        </div>
+                        <div style="font-family:'Share Tech Mono',monospace;font-size:0.85rem;color:var(--accent-blue);margin-top:4px;" id="frac-decimal-result"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Percent Calculator -->
+        <section id="mode-percent" class="mode-section">
+            <div class="calculator-body">
+                <h3 style="font-size:0.9rem;font-weight:600;margin-bottom:12px;color:var(--accent-blue);">Percent Calculator</h3>
+                <div class="percent-mode-select">
+                    <button class="active-op" data-pmode="of">% of</button>
+                    <button data-pmode="what-pct">is what %</button>
+                    <button data-pmode="of-what">% of what</button>
+                    <button data-pmode="diff">% diff</button>
+                    <button data-pmode="change">% change</button>
+                </div>
+                <div class="percent-fields" id="percent-fields">
+                    <div class="percent-row">
+                        <label>X</label>
+                        <input type="number" id="pct-val1" value="10">
+                        <span class="pct-label">%</span>
+                        <span class="pct-eq">of</span>
+                        <input type="number" id="pct-val2" value="200">
+                        <span class="pct-eq">=</span>
+                        <input type="number" id="pct-val3" value="" readonly>
+                    </div>
+                </div>
+                <div class="percent-result" id="percent-result">
+                    20
+                    <div class="pct-sub">10% of 200 = 20</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Random Number Generator -->
+        <section id="mode-random" class="mode-section">
+            <div class="calculator-body">
+                <h3 style="font-size:0.9rem;font-weight:600;margin-bottom:12px;color:var(--accent-blue);">Random Number Generator</h3>
+                <div class="random-controls">
+                    <div class="random-row">
+                        <label>Lower Limit</label>
+                        <input type="number" id="rand-min" value="1">
+                    </div>
+                    <div class="random-row">
+                        <label>Upper Limit</label>
+                        <input type="number" id="rand-max" value="100">
+                    </div>
+                    <div class="random-row">
+                        <label>Count</label>
+                        <input type="number" id="rand-count" value="1" min="1" max="1000">
+                    </div>
+                    <div class="random-row">
+                        <label>Type</label>
+                        <select id="rand-type">
+                            <option value="int">Integer</option>
+                            <option value="dec">Decimal</option>
+                        </select>
+                        <span id="rand-prec-wrap" style="display:none;">
+                            <label style="font-size:0.8rem;color:var(--text-secondary);">Precision</label>
+                            <select id="rand-precision">
+                                <option value="1">1</option>
+                                <option value="2" selected>2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </span>
+                    </div>
+                    <div class="random-row">
+                        <label>Duplicates</label>
+                        <input type="checkbox" id="rand-dup" checked>
+                        <span style="font-size:0.8rem;color:var(--text-secondary);">Allow</span>
+                    </div>
+                    <div class="random-row">
+                        <label>Sort</label>
+                        <select id="rand-sort">
+                            <option value="none">None</option>
+                            <option value="asc">Ascending</option>
+                            <option value="desc">Descending</option>
+                        </select>
+                    </div>
+                    <button class="random-gen-btn" id="rand-generate">Generate</button>
+                </div>
+                <div class="random-results" id="rand-results">Click "Generate" to get random numbers</div>
+            </div>
+        </section>
+
+        <!-- Percent Error Calculator -->
+        <section id="mode-error" class="mode-section">
+            <div class="calculator-body">
+                <h3 style="font-size:0.9rem;font-weight:600;margin-bottom:12px;color:var(--accent-blue);">Percent Error Calculator</h3>
+                <div class="error-fields">
+                    <div class="error-row">
+                        <label>Observed Value</label>
+                        <input type="number" id="err-observed" value="56.891" step="any">
+                    </div>
+                    <div class="error-row">
+                        <label>True Value</label>
+                        <input type="number" id="err-true" value="62.327" step="any">
+                    </div>
+                    <button class="error-calc-btn" id="err-calc">Calculate Error</button>
+                </div>
+                <div class="error-results" id="err-results">
+                    <div class="er-row"><span class="er-label">Absolute Error:</span><span class="er-value" id="err-abs">—</span></div>
+                    <div class="er-row"><span class="er-label">Relative Error:</span><span class="er-value" id="err-rel">—</span></div>
+                    <div class="er-row"><span class="er-label">Percentage Error:</span><span class="er-value" id="err-pct">—</span></div>
+                    <div class="er-row" style="display:none;" id="err-negative-row"><span class="er-label">Signed Error:</span><span class="er-value" id="err-signed">—</span></div>
                 </div>
             </div>
         </section>
@@ -1860,6 +2097,365 @@ class ArbitraryPrecision {
 }
 
 // ============================================================
+// FRACTION CALCULATOR
+// ============================================================
+class FractionCalculator {
+    constructor() {
+        this.op = '+';
+        this.n1 = document.getElementById('frac-n1');
+        this.d1 = document.getElementById('frac-d1');
+        this.n2 = document.getElementById('frac-n2');
+        this.d2 = document.getElementById('frac-d2');
+        this.opDisplay = document.getElementById('frac-op-display');
+        this.result = document.getElementById('frac-result');
+        this.decimal = document.getElementById('frac-decimal');
+        this.simpN = document.getElementById('frac-simp-n');
+        this.simpD = document.getElementById('frac-simp-d');
+        this.simpResult = document.getElementById('frac-simp-result');
+        this.decIn = document.getElementById('frac-decimal-in');
+        this.decResult = document.getElementById('frac-decimal-result');
+        this.init();
+    }
+
+    init() {
+        document.querySelectorAll('#mode-fraction .fraction-op-select button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('#mode-fraction .fraction-op-select button').forEach(b => b.classList.remove('active-op'));
+                btn.classList.add('active-op');
+                this.op = btn.dataset.op;
+                this.opDisplay.textContent = btn.textContent;
+                this.calc();
+            });
+        });
+        [this.n1, this.d1, this.n2, this.d2].forEach(el => el.addEventListener('input', () => this.calc()));
+        document.getElementById('frac-simplify').addEventListener('click', () => this.simplify());
+        document.getElementById('frac-to-frac').addEventListener('click', () => this.decToFrac());
+        [this.simpN, this.simpD].forEach(el => el.addEventListener('keydown', (e) => { if (e.key === 'Enter') this.simplify(); }));
+        this.decIn.addEventListener('keydown', (e) => { if (e.key === 'Enter') this.decToFrac(); });
+        this.calc();
+    }
+
+    gcd(a, b) { a = Math.abs(a); b = Math.abs(b); while (b) { [a, b] = [b, a % b]; } return a; }
+
+    calc() {
+        let n1 = parseInt(this.n1.value) || 0;
+        let d1 = parseInt(this.d1.value) || 1;
+        let n2 = parseInt(this.n2.value) || 0;
+        let d2 = parseInt(this.d2.value) || 1;
+        if (d1 === 0) d1 = 1; if (d2 === 0) d2 = 1;
+        let rn, rd;
+        switch (this.op) {
+            case '+': rn = n1 * d2 + n2 * d1; rd = d1 * d2; break;
+            case '-': rn = n1 * d2 - n2 * d1; rd = d1 * d2; break;
+            case '*': rn = n1 * n2; rd = d1 * d2; break;
+            case '/': rn = n1 * d2; rd = d1 * n2; break;
+        }
+        if (rd < 0) { rn = -rn; rd = -rd; }
+        if (rd === 0) { this.result.textContent = 'Undefined'; this.decimal.textContent = ''; return; }
+        const g = this.gcd(rn, rd);
+        const sn = rn / g, sd = rd / g;
+        const decVal = rn / rd;
+        this.result.textContent = sd === 1 ? sn.toString() : sn + '/' + sd;
+        this.decimal.textContent = '≈ ' + decVal.toPrecision(10).replace(/\.?0+$/, '');
+    }
+
+    simplify() {
+        let n = parseInt(this.simpN.value);
+        let d = parseInt(this.simpD.value);
+        if (!n || !d || d === 0) { this.simpResult.textContent = 'Enter valid numerator & denominator'; return; }
+        if (d < 0) { n = -n; d = -d; }
+        const g = this.gcd(n, d);
+        const sn = n / g, sd = d / g;
+        const dec = n / d;
+        this.simpResult.textContent = sd === 1 ? sn.toString() : sn + '/' + sd;
+        this.simpResult.textContent += ' ≈ ' + dec.toPrecision(8).replace(/\.?0+$/, '');
+    }
+
+    decToFrac() {
+        let val = parseFloat(this.decIn.value);
+        if (isNaN(val)) { this.decResult.textContent = 'Enter a valid decimal'; return; }
+        const prec = 1e8;
+        let num = Math.round(val * prec);
+        let den = prec;
+        if (num === 0) { this.decResult.textContent = '0'; return; }
+        const g = this.gcd(num, den);
+        num /= g; den /= g;
+        if (den < 0) { num = -num; den = -den; }
+        this.decResult.textContent = den === 1 ? num.toString() : num + '/' + den;
+    }
+}
+
+// ============================================================
+// PERCENT CALCULATOR
+// ============================================================
+class PercentCalculator {
+    constructor() {
+        this.mode = 'of';
+        this.val1 = document.getElementById('pct-val1');
+        this.val2 = document.getElementById('pct-val2');
+        this.val3 = document.getElementById('pct-val3');
+        this.result = document.getElementById('percent-result');
+        this.fields = document.getElementById('percent-fields');
+        this.init();
+    }
+
+    init() {
+        document.querySelectorAll('#mode-percent .percent-mode-select button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('#mode-percent .percent-mode-select button').forEach(b => b.classList.remove('active-op'));
+                btn.classList.add('active-op');
+                this.mode = btn.dataset.pmode;
+                this.updateUI();
+                this.calc();
+            });
+        });
+        [this.val1, this.val2].forEach(el => el.addEventListener('input', () => this.calc()));
+        this.val3.addEventListener('input', () => {
+            if (this.mode === 'of-what') {
+                this.val1.value = ''; this.val2.value = '';
+                this.calc();
+            }
+        });
+        this.updateUI();
+        this.calc();
+    }
+
+    updateUI() {
+        const wrap = this.fields;
+        switch (this.mode) {
+            case 'of':
+                wrap.innerHTML = `
+                    <div class="percent-row">
+                        <label>X</label>
+                        <input type="number" id="pct-val1" value="${this.val1.value || 10}">
+                        <span class="pct-label">%</span>
+                        <span class="pct-eq">of</span>
+                        <input type="number" id="pct-val2" value="${this.val2.value || 200}">
+                        <span class="pct-eq">=</span>
+                        <input type="number" id="pct-val3" value="" readonly>
+                    </div>`;
+                break;
+            case 'what-pct':
+                wrap.innerHTML = `
+                    <div class="percent-row">
+                        <label>X</label>
+                        <input type="number" id="pct-val1" value="${this.val1.value || 20}">
+                        <span class="pct-eq">is what % of</span>
+                        <input type="number" id="pct-val2" value="${this.val2.value || 200}">
+                        <span class="pct-eq">?</span>
+                        <input type="number" id="pct-val3" value="" readonly>
+                    </div>`;
+                break;
+            case 'of-what':
+                wrap.innerHTML = `
+                    <div class="percent-row">
+                        <label>X</label>
+                        <input type="number" id="pct-val1" value="${this.val1.value || 20}">
+                        <span class="pct-label">%</span>
+                        <span class="pct-eq">of what =</span>
+                        <input type="number" id="pct-val3" value="${this.val3.value || 100}">
+                    </div>`;
+                break;
+            case 'diff':
+                wrap.innerHTML = `
+                    <div class="percent-row">
+                        <label>V₁</label>
+                        <input type="number" id="pct-val1" value="${this.val1.value || 10}">
+                        <span class="pct-eq">vs</span>
+                        <input type="number" id="pct-val2" value="${this.val2.value || 6}">
+                        <span class="pct-eq">=</span>
+                        <input type="number" id="pct-val3" value="" readonly>
+                    </div>`;
+                break;
+            case 'change':
+                wrap.innerHTML = `
+                    <div class="percent-row">
+                        <label>Old</label>
+                        <input type="number" id="pct-val1" value="${this.val1.value || 500}">
+                        <span class="pct-eq">→</span>
+                        <label>New</label>
+                        <input type="number" id="pct-val2" value="${this.val2.value || 550}">
+                        <span class="pct-eq">=</span>
+                        <input type="number" id="pct-val3" value="" readonly>
+                    </div>`;
+                break;
+        }
+        this.val1 = document.getElementById('pct-val1');
+        this.val2 = document.getElementById('pct-val2');
+        this.val3 = document.getElementById('pct-val3');
+        [this.val1, this.val2].forEach(el => el.addEventListener('input', () => this.calc()));
+        if (this.mode === 'of-what') {
+            this.val3.addEventListener('input', () => { this.val1.value = ''; this.val2.value = ''; this.calc(); });
+        }
+    }
+
+    calc() {
+        const v1 = parseFloat(this.val1.value);
+        const v2 = parseFloat(this.val2.value);
+        const v3 = parseFloat(this.val3.value);
+        let result, sub;
+        switch (this.mode) {
+            case 'of':
+                if (isNaN(v1) || isNaN(v2)) { result = '—'; sub = ''; break; }
+                result = (v1 / 100) * v2;
+                sub = `${this.fmt(v1)}% of ${this.fmt(v2)} = ${this.fmt(result)}`;
+                this.val3.value = result.toPrecision(10).replace(/\.?0+$/, '');
+                break;
+            case 'what-pct':
+                if (isNaN(v1) || isNaN(v2) || v2 === 0) { result = '—'; sub = ''; break; }
+                result = (v1 / v2) * 100;
+                sub = `${this.fmt(v1)} is ${this.fmt(result)}% of ${this.fmt(v2)}`;
+                this.val3.value = result.toPrecision(10).replace(/\.?0+$/, '');
+                break;
+            case 'of-what':
+                if (isNaN(v1) || isNaN(v3)) { result = '—'; sub = ''; break; }
+                result = (v3 / v1) * 100;
+                sub = `${this.fmt(v1)}% of ${this.fmt(result)} = ${this.fmt(v3)}`;
+                break;
+            case 'diff':
+                if (isNaN(v1) || isNaN(v2)) { result = '—'; sub = ''; break; }
+                const avg = (v1 + v2) / 2;
+                result = avg === 0 ? 0 : (Math.abs(v1 - v2) / avg) * 100;
+                sub = `|${this.fmt(v1)} − ${this.fmt(v2)}| / ((${this.fmt(v1)} + ${this.fmt(v2)})/2) × 100 = ${this.fmt(result)}%`;
+                this.val3.value = result.toPrecision(10).replace(/\.?0+$/, '');
+                break;
+            case 'change':
+                if (isNaN(v1) || isNaN(v2) || v1 === 0) { result = '—'; sub = ''; break; }
+                result = ((v2 - v1) / Math.abs(v1)) * 100;
+                const dir = result >= 0 ? 'increase' : 'decrease';
+                sub = `${this.fmt(v1)} → ${this.fmt(v2)}: ${this.fmt(Math.abs(result))}% ${dir}`;
+                this.val3.value = result.toPrecision(10).replace(/\.?0+$/, '');
+                break;
+        }
+        this.result.innerHTML = this.fmt(result) + '<div class="pct-sub">' + (sub || '') + '</div>';
+    }
+
+    fmt(n) {
+        if (typeof n !== 'number' || isNaN(n)) return '—';
+        if (Math.abs(n) > 1e9 || (Math.abs(n) < 1e-6 && n !== 0)) return n.toExponential(4);
+        return parseFloat(n.toPrecision(10)).toString();
+    }
+}
+
+// ============================================================
+// RANDOM NUMBER GENERATOR
+// ============================================================
+class RandomGenerator {
+    constructor() {
+        this.min = document.getElementById('rand-min');
+        this.max = document.getElementById('rand-max');
+        this.count = document.getElementById('rand-count');
+        this.type = document.getElementById('rand-type');
+        this.precision = document.getElementById('rand-precision');
+        this.precWrap = document.getElementById('rand-prec-wrap');
+        this.dup = document.getElementById('rand-dup');
+        this.sort = document.getElementById('rand-sort');
+        this.results = document.getElementById('rand-results');
+        this.genBtn = document.getElementById('rand-generate');
+        this.init();
+    }
+
+    init() {
+        this.genBtn.addEventListener('click', () => this.generate());
+        this.type.addEventListener('change', () => {
+            this.precWrap.style.display = this.type.value === 'dec' ? 'inline' : 'none';
+        });
+        [this.min, this.max, this.count].forEach(el => el.addEventListener('keydown', (e) => { if (e.key === 'Enter') this.generate(); }));
+    }
+
+    generate() {
+        let lo = parseFloat(this.min.value) || 0;
+        let hi = parseFloat(this.max.value) || 100;
+        let ct = Math.min(parseInt(this.count.value) || 1, 1000);
+        const isDec = this.type.value === 'dec';
+        const prec = parseInt(this.precision.value) || 2;
+        const allowDup = this.dup.checked;
+        const sortMode = this.sort.value;
+
+        if (lo > hi) { let t = lo; lo = hi; hi = t; }
+        if (ct < 1) ct = 1;
+
+        let nums = [];
+        const maxAttempts = ct * 100;
+        let attempts = 0;
+
+        while (nums.length < ct && attempts < maxAttempts) {
+            attempts++;
+            let val;
+            if (isDec) {
+                val = lo + Math.random() * (hi - lo);
+                val = parseFloat(val.toFixed(prec));
+            } else {
+                val = Math.floor(Math.random() * (hi - lo + 1)) + lo;
+            }
+            if (allowDup || !nums.includes(val)) {
+                nums.push(val);
+            }
+        }
+
+        if (sortMode === 'asc') nums.sort((a, b) => a - b);
+        else if (sortMode === 'desc') nums.sort((a, b) => b - a);
+
+        const display = nums.map((n, i) => {
+            const numStr = isDec ? n.toFixed(prec) : n.toString();
+            return (i + 1) + '. ' + numStr;
+        }).join('\n');
+
+        this.results.textContent = nums.length > 0 ? display : 'Could not generate enough unique numbers. Try a larger range.';
+    }
+}
+
+// ============================================================
+// PERCENT ERROR CALCULATOR
+// ============================================================
+class PercentErrorCalculator {
+    constructor() {
+        this.observed = document.getElementById('err-observed');
+        this.trueVal = document.getElementById('err-true');
+        this.calcBtn = document.getElementById('err-calc');
+        this.absEl = document.getElementById('err-abs');
+        this.relEl = document.getElementById('err-rel');
+        this.pctEl = document.getElementById('err-pct');
+        this.signedEl = document.getElementById('err-signed');
+        this.negRow = document.getElementById('err-negative-row');
+        this.init();
+    }
+
+    init() {
+        this.calcBtn.addEventListener('click', () => this.calc());
+        [this.observed, this.trueVal].forEach(el => el.addEventListener('keydown', (e) => { if (e.key === 'Enter') this.calc(); }));
+        this.calc();
+    }
+
+    calc() {
+        const obs = parseFloat(this.observed.value);
+        const tru = parseFloat(this.trueVal.value);
+        if (isNaN(obs) || isNaN(tru) || tru === 0) {
+            this.absEl.textContent = '—';
+            this.relEl.textContent = '—';
+            this.pctEl.textContent = '—';
+            this.negRow.style.display = 'none';
+            return;
+        }
+        const absErr = Math.abs(obs - tru);
+        const relErr = absErr / Math.abs(tru);
+        const pctErr = relErr * 100;
+        const signedErr = ((obs - tru) / Math.abs(tru)) * 100;
+
+        this.absEl.textContent = absErr.toPrecision(8).replace(/\.?0+$/, '');
+        this.relEl.textContent = relErr.toPrecision(8).replace(/\.?0+$/, '');
+        this.pctEl.textContent = pctErr.toPrecision(8).replace(/\.?0+$/, '') + '%';
+
+        if (signedErr !== pctErr) {
+            this.negRow.style.display = 'flex';
+            this.signedEl.textContent = signedErr.toPrecision(8).replace(/\.?0+$/, '') + '%';
+        } else {
+            this.negRow.style.display = 'none';
+        }
+    }
+}
+
+// ============================================================
 // APP - Navigation Controller
 // ============================================================
 class App {
@@ -1870,6 +2466,10 @@ class App {
         this.graph = new GraphCalculator();
         this.units = new UnitConverter();
         this.precision = new ArbitraryPrecision();
+        this.fraction = new FractionCalculator();
+        this.percent = new PercentCalculator();
+        this.random = new RandomGenerator();
+        this.error = new PercentErrorCalculator();
     }
 
     initNav() {
