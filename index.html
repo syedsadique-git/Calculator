@@ -104,7 +104,43 @@ body::after {
 .mode-section { display: none; width: 100%; }
 .mode-section.active { display: block; }
 #mode-normal, #mode-scientific { max-width: 500px; }
-#mode-graph { max-width: 640px; }
+#mode-home { max-width: 900px; }
+.home-container { width: 100%; padding: 8px 0; }
+.home-header { margin-bottom: 28px; }
+.home-title { font-size: 1.6rem; font-weight: 700; background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 6px; }
+.home-subtitle { font-size: 0.85rem; color: var(--text-secondary); }
+.home-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 14px; }
+.home-tile {
+    background: var(--bg-card); border: 1px solid var(--border-color);
+    border-radius: 14px; padding: 20px 16px; cursor: pointer;
+    transition: all 0.25s; display: flex; flex-direction: column;
+    align-items: center; text-align: center; gap: 8px;
+    aspect-ratio: 1 / 1; justify-content: center;
+    backdrop-filter: blur(8px);
+}
+.home-tile:hover {
+    border-color: var(--accent-purple); transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(138,43,226,0.2);
+    background: rgba(30,25,50,0.9);
+}
+.home-tile:active { transform: translateY(0); }
+.home-tile-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; font-weight: 700;
+    background: linear-gradient(135deg, rgba(138,43,226,0.3), rgba(0,191,255,0.15));
+    color: var(--accent-blue);
+}
+.home-tile-label { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); }
+.home-tile-desc { font-size: 0.7rem; color: var(--text-secondary); line-height: 1.3; }
+@media (max-width: 600px) {
+    .home-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .home-tile { padding: 14px 10px; }
+    .home-tile-icon { width: 40px; height: 40px; font-size: 0.95rem; }
+    .home-title { font-size: 1.2rem; }
+}
+
+#mode-graph { max-width: 960px; }
 #mode-units { max-width: 520px; }
 #mode-precision { max-width: 480px; }
 
@@ -175,30 +211,32 @@ button.active-key { transform: scale(0.95); box-shadow: 0 0 20px rgba(138,43,226
 .graph-controls { display: flex; gap: 8px; margin-bottom: 12px; }
 .graph-controls input {
     flex: 1; background: rgba(10,10,20,0.6); border: 1px solid var(--border-color);
-    border-radius: 8px; padding: 10px 14px; color: var(--text-primary);
-    font-family: 'Share Tech Mono', monospace; font-size: 0.9rem; outline: none;
+    border-radius: 8px; padding: 12px 16px; color: var(--text-primary);
+    font-family: 'Share Tech Mono', monospace; font-size: 0.95rem; outline: none;
     transition: border-color 0.2s;
 }
 .graph-controls input:focus { border-color: var(--accent-purple); }
-.graph-controls button { padding: 10px 18px; font-size: 0.85rem; }
+.graph-controls button { padding: 12px 20px; font-size: 0.9rem; }
+.graph-container { display: flex; flex-direction: column; gap: 8px; }
 .graph-canvas-wrapper {
     position: relative; border-radius: 12px; overflow: hidden;
     border: 1px solid var(--border-color); background: rgba(10,10,20,0.6);
 }
 .graph-canvas-wrapper canvas { display: block; width: 100%; height: auto; cursor: grab; }
 .graph-canvas-wrapper canvas:active { cursor: grabbing; }
-.graph-zoom { display: flex; gap: 6px; justify-content: center; margin-top: 10px; }
-.graph-zoom button { padding: 6px 14px; font-size: 0.8rem; background: rgba(40,40,60,0.5); }
+.graph-zoom { display: flex; gap: 8px; justify-content: center; margin-top: 10px; }
+.graph-zoom button { padding: 8px 18px; font-size: 0.85rem; background: rgba(40,40,60,0.5); }
 .graph-info { 
     display: flex; justify-content: space-between; margin-top: 8px;
-    font-size: 0.75rem; color: var(--text-secondary);
+    padding: 8px 12px; background: rgba(10,10,20,0.4); border-radius: 8px;
+    font-size: 0.8rem; color: var(--text-secondary);
 }
 .graph-multi { margin-top: 10px; }
 .graph-multi-row { display: flex; gap: 8px; margin-bottom: 6px; align-items: center; }
-.graph-multi-row input[type="text"] { flex: 1; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(10,10,20,0.6); color: var(--text-primary); font-family: 'Share Tech Mono', monospace; font-size: 0.8rem; outline: none; }
-.graph-multi-row input[type="color"] { width: 32px; height: 32px; border-radius: 6px; border: 1px solid var(--border-color); background: transparent; cursor: pointer; padding: 2px; }
-.graph-multi-row .remove-fn { padding: 6px 10px; font-size: 0.7rem; background: rgba(220,20,60,0.4); }
-.graph-add-fn { padding: 6px 14px; font-size: 0.8rem; background: rgba(0,191,255,0.3); margin-top: 4px; }
+.graph-multi-row input[type="text"] { flex: 1; padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(10,10,20,0.6); color: var(--text-primary); font-family: 'Share Tech Mono', monospace; font-size: 0.85rem; outline: none; }
+.graph-multi-row input[type="color"] { width: 36px; height: 36px; border-radius: 6px; border: 1px solid var(--border-color); background: transparent; cursor: pointer; padding: 2px; }
+.graph-multi-row .remove-fn { padding: 8px 12px; font-size: 0.75rem; background: rgba(220,20,60,0.4); }
+.graph-add-fn { padding: 8px 16px; font-size: 0.85rem; background: rgba(0,191,255,0.3); margin-top: 6px; }
 
 /* Units Converter */
 .units-category { margin-bottom: 16px; }
@@ -493,7 +531,11 @@ button.active-key { transform: scale(0.95); box-shadow: 0 0 20px rgba(138,43,226
             <span>Multi-Mode Calculator</span>
         </div>
         <nav class="sidebar-nav">
-            <a class="nav-item active" data-mode="normal">
+            <a class="nav-item active" data-mode="home">
+                <div class="nav-icon">⌂</div>
+                <span>Home</span>
+            </a>
+            <a class="nav-item" data-mode="normal">
                 <div class="nav-icon">#</div>
                 <span>Basic</span>
             </a>
@@ -570,8 +612,110 @@ button.active-key { transform: scale(0.95); box-shadow: 0 0 20px rgba(138,43,226
     </aside>
 
     <main class="main-content">
+        <!-- Home / Landing Page -->
+        <section id="mode-home" class="mode-section active">
+            <div class="home-container">
+                <div class="home-header">
+                    <h2 class="home-title">Choose a Calculator</h2>
+                    <p class="home-subtitle">Select a tool from the sidebar or pick a tile below</p>
+                </div>
+                <div class="home-grid">
+                    <div class="home-tile" data-mode="normal">
+                        <div class="home-tile-icon">#</div>
+                        <span class="home-tile-label">Basic</span>
+                        <span class="home-tile-desc">Addition, subtraction, multiplication, division</span>
+                    </div>
+                    <div class="home-tile" data-mode="scientific">
+                        <div class="home-tile-icon">sin</div>
+                        <span class="home-tile-label">Scientific</span>
+                        <span class="home-tile-desc">Trig, log, exponentials, memory functions</span>
+                    </div>
+                    <div class="home-tile" data-mode="graph">
+                        <div class="home-tile-icon">f(x)</div>
+                        <span class="home-tile-label">Graph</span>
+                        <span class="home-tile-desc">Plot functions, zoom, pan, multi-function</span>
+                    </div>
+                    <div class="home-tile" data-mode="units">
+                        <div class="home-tile-icon">cm</div>
+                        <span class="home-tile-label">Units</span>
+                        <span class="home-tile-desc">Length, mass, temperature, volume, area</span>
+                    </div>
+                    <div class="home-tile" data-mode="precision">
+                        <div class="home-tile-icon">∞</div>
+                        <span class="home-tile-label">Precision</span>
+                        <span class="home-tile-desc">Arbitrary precision arithmetic (up to 200 digits)</span>
+                    </div>
+                    <div class="home-tile" data-mode="fraction">
+                        <div class="home-tile-icon">a/b</div>
+                        <span class="home-tile-label">Fraction</span>
+                        <span class="home-tile-desc">Fraction arithmetic, simplify, decimal conversion</span>
+                    </div>
+                    <div class="home-tile" data-mode="percent">
+                        <div class="home-tile-icon">%</div>
+                        <span class="home-tile-label">Percent</span>
+                        <span class="home-tile-desc">Percentage of, diff, change, and more</span>
+                    </div>
+                    <div class="home-tile" data-mode="random">
+                        <div class="home-tile-icon">🎲</div>
+                        <span class="home-tile-label">Random</span>
+                        <span class="home-tile-desc">Configurable random number generator</span>
+                    </div>
+                    <div class="home-tile" data-mode="error">
+                        <div class="home-tile-icon">±</div>
+                        <span class="home-tile-label">Error</span>
+                        <span class="home-tile-desc">Percent error, relative error calculator</span>
+                    </div>
+                    <div class="home-tile" data-mode="binary">
+                        <div class="home-tile-icon">01</div>
+                        <span class="home-tile-label">Binary</span>
+                        <span class="home-tile-desc">Binary arithmetic and base conversion</span>
+                    </div>
+                    <div class="home-tile" data-mode="halflife">
+                        <div class="home-tile-icon">λ</div>
+                        <span class="home-tile-label">Half-Life</span>
+                        <span class="home-tile-desc">Radioactive decay calculations</span>
+                    </div>
+                    <div class="home-tile" data-mode="quadratic">
+                        <div class="home-tile-icon">x²</div>
+                        <span class="home-tile-label">Quadratic</span>
+                        <span class="home-tile-desc">Quadratic formula with real and complex roots</span>
+                    </div>
+                    <div class="home-tile" data-mode="logcalc">
+                        <div class="home-tile-icon">log</div>
+                        <span class="home-tile-label">Log</span>
+                        <span class="home-tile-desc">Logarithm with any base, log rules reference</span>
+                    </div>
+                    <div class="home-tile" data-mode="rounding">
+                        <div class="home-tile-icon">⌵</div>
+                        <span class="home-tile-label">Round</span>
+                        <span class="home-tile-desc">Number rounding with configurable modes</span>
+                    </div>
+                    <div class="home-tile" data-mode="lcm">
+                        <div class="home-tile-icon">LCM</div>
+                        <span class="home-tile-label">LCM</span>
+                        <span class="home-tile-desc">Least common multiple calculator</span>
+                    </div>
+                    <div class="home-tile" data-mode="gcf">
+                        <div class="home-tile-icon">GCF</div>
+                        <span class="home-tile-label">GCF</span>
+                        <span class="home-tile-desc">Greatest common factor calculator</span>
+                    </div>
+                    <div class="home-tile" data-mode="matrix">
+                        <div class="home-tile-icon">⌗</div>
+                        <span class="home-tile-label">Matrix</span>
+                        <span class="home-tile-desc">2×2 and 3×3 matrix operations</span>
+                    </div>
+                    <div class="home-tile" data-mode="bignum">
+                        <div class="home-tile-icon">¹⁰</div>
+                        <span class="home-tile-label">BigNum</span>
+                        <span class="home-tile-desc">Arbitrarily large integer arithmetic</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Normal Calculator -->
-        <section id="mode-normal" class="mode-section active">
+        <section id="mode-normal" class="mode-section">
             <div class="calculator-body">
                 <div class="display">
                     <div class="mode-indicator">
@@ -686,7 +830,7 @@ button.active-key { transform: scale(0.95); box-shadow: 0 0 20px rgba(138,43,226
                         <button id="graph-plot" style="background:linear-gradient(135deg,rgba(0,191,255,0.6),rgba(30,144,255,0.6));">Plot</button>
                     </div>
                     <div class="graph-canvas-wrapper">
-                        <canvas id="graph-canvas" width="600" height="400"></canvas>
+                        <canvas id="graph-canvas" width="800" height="500"></canvas>
                     </div>
                     <div class="graph-info">
                         <span id="graph-coords">x: 0.00, y: 0.00</span>
@@ -1739,6 +1883,7 @@ class GraphCalculator {
         this.dragStartX = 0; this.dragStartY = 0;
         this.dragXMin = 0; this.dragYMin = 0;
         this.nextColorIdx = 1;
+        this.touchDist = 0;
         this.COLORS = ['#ff6b6b', '#ffd93d', '#6bcb77', '#4d96ff', '#ff6bff', '#ff9f43', '#00d2d3', '#f368e0'];
         this.init();
     }
@@ -1756,6 +1901,10 @@ class GraphCalculator {
         this.canvas.addEventListener('mouseleave', () => this.onMouseUp());
         this.canvas.addEventListener('wheel', (e) => { e.preventDefault(); const d = e.deltaY > 0 ? 1.1 : 0.9; this.zoom(d, e); }, { passive: false });
         this.canvas.addEventListener('contextmenu', (e) => e.preventDefault());
+        // Touch support
+        this.canvas.addEventListener('touchstart', (e) => this.onTouchStart(e), { passive: false });
+        this.canvas.addEventListener('touchmove', (e) => this.onTouchMove(e), { passive: false });
+        this.canvas.addEventListener('touchend', () => this.onMouseUp());
         this.draw();
     }
 
@@ -1837,7 +1986,7 @@ class GraphCalculator {
         if (event) {
             const rect = this.canvas.getBoundingClientRect();
             const mx = (event.clientX - rect.left) / rect.width;
-            const my = (event.clientY - rect.top) / rect.height;
+            const my = 1 - (event.clientY - rect.top) / rect.height;
             const cx = this.xMin + (this.xMax - this.xMin) * mx;
             const cy = this.yMin + (this.yMax - this.yMin) * my;
             const xRange = (this.xMax - this.xMin) * factor;
@@ -1862,7 +2011,9 @@ class GraphCalculator {
         this.dragStartX = e.clientX;
         this.dragStartY = e.clientY;
         this.dragXMin = this.xMin;
+        this.dragXMax = this.xMax;
         this.dragYMin = this.yMin;
+        this.dragYMax = this.yMax;
     }
 
     onMouseMove(e) {
@@ -1873,17 +2024,55 @@ class GraphCalculator {
         const y = this.yMin + (this.yMax - this.yMin) * py;
         this.coordsEl.textContent = `x: ${x.toFixed(2)}, y: ${y.toFixed(2)}`;
         if (this.isDragging) {
-            const dx = (e.clientX - this.dragStartX) / rect.width * (this.xMax - this.xMin);
-            const dy = (e.clientY - this.dragStartY) / rect.height * (this.yMax - this.yMin);
+            const xRange = this.dragXMax - this.dragXMin;
+            const yRange = this.dragYMax - this.dragYMin;
+            const dx = (e.clientX - this.dragStartX) / rect.width * xRange;
+            const dy = (e.clientY - this.dragStartY) / rect.height * yRange;
             this.xMin = this.dragXMin - dx;
-            this.xMax = this.xMin + (this.xMax - this.xMin);
+            this.xMax = this.dragXMax - dx;
             this.yMin = this.dragYMin + dy;
-            this.yMax = this.yMin + (this.yMax - this.yMin);
+            this.yMax = this.dragYMax + dy;
             this.draw();
         }
     }
 
     onMouseUp() { this.isDragging = false; }
+
+    onTouchStart(e) {
+        e.preventDefault();
+        const t = e.touches;
+        if (t.length === 1) {
+            this.onMouseDown({ clientX: t[0].clientX, clientY: t[0].clientY });
+        } else if (t.length === 2) {
+            this.touchDist = Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY);
+        }
+    }
+
+    onTouchMove(e) {
+        e.preventDefault();
+        const t = e.touches;
+        if (t.length === 1 && this.isDragging) {
+            this.onMouseMove({ clientX: t[0].clientX, clientY: t[0].clientY });
+        } else if (t.length === 2 && this.touchDist) {
+            const dist = Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY);
+            const factor = this.touchDist / dist;
+            this.touchDist = dist;
+            const cx = (t[0].clientX + t[1].clientX) / 2;
+            const cy = (t[0].clientY + t[1].clientY) / 2;
+            const rect = this.canvas.getBoundingClientRect();
+            const mx = (cx - rect.left) / rect.width;
+            const my = 1 - (cy - rect.top) / rect.height;
+            const px = this.xMin + (this.xMax - this.xMin) * mx;
+            const py = this.yMin + (this.yMax - this.yMin) * my;
+            const xr = (this.xMax - this.xMin) * factor;
+            const yr = (this.yMax - this.yMin) * factor;
+            this.xMin = px - xr * mx;
+            this.xMax = this.xMin + xr;
+            this.yMin = py - yr * my;
+            this.yMax = this.yMin + yr;
+            this.draw();
+        }
+    }
 
     compileExpr(expr) {
         let s = expr
@@ -3363,6 +3552,22 @@ class App {
                 const mode = item.dataset.mode;
                 document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
                 item.classList.add('active');
+                document.querySelectorAll('.mode-section').forEach(s => s.classList.remove('active'));
+                const target = document.getElementById('mode-' + mode);
+                if (target) {
+                    target.classList.add('active');
+                    if (mode === 'graph') {
+                        setTimeout(() => this.graph.draw(), 50);
+                    }
+                }
+            });
+        });
+        document.querySelectorAll('.home-tile').forEach(tile => {
+            tile.addEventListener('click', () => {
+                const mode = tile.dataset.mode;
+                document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+                const navItem = document.querySelector(`.nav-item[data-mode="${mode}"]`);
+                if (navItem) navItem.classList.add('active');
                 document.querySelectorAll('.mode-section').forEach(s => s.classList.remove('active'));
                 const target = document.getElementById('mode-' + mode);
                 if (target) {
