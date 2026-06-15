@@ -936,6 +936,7 @@ class NormalCalculator {
     }
 
     handleKey(e) {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
         const k = e.key;
         if (/^[0-9.]$/.test(k)) { this.inputDigit(k); this.updateDisplay(); e.preventDefault(); }
         else if (k === '+' || k === '-' || k === '*' || k === '/') { this.inputOperator(k); this.updateDisplay(); e.preventDefault(); }
@@ -1116,6 +1117,7 @@ class ScientificCalculator {
     }
 
     key(e) {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
         const k = e.key; let b = null;
         if (/^[0-9.]$/.test(k)) { this.inputNum(k); b = document.querySelector(`#mode-scientific [data-num="${k}"]`); }
         else if (k === '+' || k === '-' || k === '*' || k === '/') { this.inputOp(k); b = document.querySelector(`#mode-scientific [data-op="${k}"]`); }
@@ -1853,6 +1855,7 @@ class ArbitraryPrecision {
     }
 
     key(e) {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
         const k = e.key; let b = null;
         if (/^[0-9.]$/.test(k)) { this.inputNum(k); b = document.querySelector(`#mode-precision [data-num="${k}"]`); }
         else if (k === '+' || k === '-' || k === '*' || k === '/') { this.inputOp(k); b = document.querySelector(`#mode-precision [data-op="${k}"]`); }
