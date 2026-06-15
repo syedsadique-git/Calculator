@@ -150,13 +150,11 @@ body::after {
     background-size: cover; background-position: center;
     transition: transform 0.4s;
 }
-.home-tile:hover .home-tile-bg { transform: scale(1.1); }
+.home-tile:hover .home-tile-bg { transform: scale(1.08); }
 .home-tile-overlay {
     position: absolute; inset: 0; z-index: 1;
-    background: linear-gradient(135deg, rgba(15,15,26,0.88), rgba(26,26,46,0.78));
-    transition: opacity 0.3s;
+    background: linear-gradient(135deg, rgba(15,15,26,0.7), rgba(26,26,46,0.55));
 }
-.home-tile:hover .home-tile-overlay { opacity: 0.92; }
 .home-tile > *:not(.home-tile-bg):not(.home-tile-overlay) { position: relative; z-index: 2; }
 .home-tile:hover {
     border-color: var(--accent-purple); transform: translateY(-3px);
@@ -662,126 +660,126 @@ button.active-key { transform: scale(0.95); box-shadow: 0 0 20px rgba(138,43,226
                 </div>
                 <div class="home-grid">
                     <div class="home-tile" data-mode="normal">
-                        <div class="home-tile-bg" style="background-image:url(assets/math1.png)"></div>
+                        <div class="home-tile-bg" style="background-image:url('assets/math1.png')"></div>
                         <div class="home-tile-overlay"></div>
                         <div class="home-tile-icon">#</div>
                         <span class="home-tile-label">Basic</span>
                         <span class="home-tile-desc">Addition, subtraction, multiplication, division</span>
                     </div>
                     <div class="home-tile" data-mode="scientific">
-                        <div class="home-tile-bg" style="background-image:url(assets/math2.jpg)"></div>
+                        <div class="home-tile-bg" style="background-image:url('assets/math2.jpg')"></div>
                         <div class="home-tile-overlay"></div>
                         <div class="home-tile-icon">sin</div>
                         <span class="home-tile-label">Scientific</span>
                         <span class="home-tile-desc">Trig, log, exponentials, memory functions</span>
                     </div>
                     <div class="home-tile" data-mode="graph">
-                        <div class="home-tile-bg" style="background-image:url(assets/math3.jpg)"></div>
+                        <div class="home-tile-bg" style="background-image:url('assets/math3.jpg')"></div>
                         <div class="home-tile-overlay"></div>
                         <div class="home-tile-icon">f(x)</div>
                         <span class="home-tile-label">Graph</span>
                         <span class="home-tile-desc">Plot functions, zoom, pan, multi-function</span>
                     </div>
                     <div class="home-tile" data-mode="units">
-                        <div class="home-tile-bg" style="background-image:url(assets/math4.jpg)"></div>
+                        <div class="home-tile-bg" style="background-image:url('assets/math4.jpg')"></div>
                         <div class="home-tile-overlay"></div>
                         <div class="home-tile-icon">cm</div>
                         <span class="home-tile-label">Units</span>
                         <span class="home-tile-desc">Length, mass, temperature, volume, area</span>
                     </div>
                     <div class="home-tile" data-mode="precision">
-                        <div class="home-tile-bg" style="background-image:url(assets/math5.jpg)"></div>
+                        <div class="home-tile-bg" style="background-image:url('assets/math5.jpg')"></div>
                         <div class="home-tile-overlay"></div>
                         <div class="home-tile-icon">∞</div>
                         <span class="home-tile-label">Precision</span>
                         <span class="home-tile-desc">Arbitrary precision arithmetic (up to 200 digits)</span>
                     </div>
                     <div class="home-tile" data-mode="fraction">
-                        <div class="home-tile-bg" style="background-image:url(assets/math6.jpg)"></div>
+                        <div class="home-tile-bg" style="background-image:url('assets/math6.jpg')"></div>
                         <div class="home-tile-overlay"></div>
                         <div class="home-tile-icon">a/b</div>
                         <span class="home-tile-label">Fraction</span>
                         <span class="home-tile-desc">Fraction arithmetic, simplify, decimal conversion</span>
                     </div>
                     <div class="home-tile" data-mode="percent">
-                        <div class="home-tile-bg" style="background-image:url(assets/math7.jpg)"></div>
+                        <div class="home-tile-bg" style="background-image:url('assets/math7.jpg')"></div>
                         <div class="home-tile-overlay"></div>
                         <div class="home-tile-icon">%</div>
                         <span class="home-tile-label">Percent</span>
                         <span class="home-tile-desc">Percentage of, diff, change, and more</span>
                     </div>
                     <div class="home-tile" data-mode="random">
-                        <div class="home-tile-bg" style="background-image:url(assets/math1.png)"></div>
+                        <div class="home-tile-bg" style="background-image:url('assets/math1.png')"></div>
                         <div class="home-tile-overlay"></div>
                         <div class="home-tile-icon">🎲</div>
                         <span class="home-tile-label">Random</span>
                         <span class="home-tile-desc">Configurable random number generator</span>
                     </div>
                     <div class="home-tile" data-mode="error">
-                        <div class="home-tile-bg" style="background-image:url(assets/math2.jpg)"></div>
+                        <div class="home-tile-bg" style="background-image:url('assets/math2.jpg')"></div>
                         <div class="home-tile-overlay"></div>
                         <div class="home-tile-icon">±</div>
                         <span class="home-tile-label">Error</span>
                         <span class="home-tile-desc">Percent error, relative error calculator</span>
                     </div>
                     <div class="home-tile" data-mode="binary">
-                        <div class="home-tile-bg" style="background-image:url(assets/math3.jpg)"></div>
+                        <div class="home-tile-bg" style="background-image:url('assets/math3.jpg')"></div>
                         <div class="home-tile-overlay"></div>
                         <div class="home-tile-icon">01</div>
                         <span class="home-tile-label">Binary</span>
                         <span class="home-tile-desc">Binary arithmetic and base conversion</span>
                     </div>
                     <div class="home-tile" data-mode="halflife">
-                        <div class="home-tile-bg" style="background-image:url(assets/math4.jpg)"></div>
+                        <div class="home-tile-bg" style="background-image:url('assets/math4.jpg')"></div>
                         <div class="home-tile-overlay"></div>
                         <div class="home-tile-icon">λ</div>
                         <span class="home-tile-label">Half-Life</span>
                         <span class="home-tile-desc">Radioactive decay calculations</span>
                     </div>
                     <div class="home-tile" data-mode="quadratic">
-                        <div class="home-tile-bg" style="background-image:url(assets/math5.jpg)"></div>
+                        <div class="home-tile-bg" style="background-image:url('assets/math5.jpg')"></div>
                         <div class="home-tile-overlay"></div>
                         <div class="home-tile-icon">x²</div>
                         <span class="home-tile-label">Quadratic</span>
                         <span class="home-tile-desc">Quadratic formula with real and complex roots</span>
                     </div>
                     <div class="home-tile" data-mode="logcalc">
-                        <div class="home-tile-bg" style="background-image:url(assets/math6.jpg)"></div>
+                        <div class="home-tile-bg" style="background-image:url('assets/math6.jpg')"></div>
                         <div class="home-tile-overlay"></div>
                         <div class="home-tile-icon">log</div>
                         <span class="home-tile-label">Log</span>
                         <span class="home-tile-desc">Logarithm with any base, log rules reference</span>
                     </div>
                     <div class="home-tile" data-mode="rounding">
-                        <div class="home-tile-bg" style="background-image:url(assets/math7.jpg)"></div>
+                        <div class="home-tile-bg" style="background-image:url('assets/math7.jpg')"></div>
                         <div class="home-tile-overlay"></div>
                         <div class="home-tile-icon">⌵</div>
                         <span class="home-tile-label">Round</span>
                         <span class="home-tile-desc">Number rounding with configurable modes</span>
                     </div>
                     <div class="home-tile" data-mode="lcm">
-                        <div class="home-tile-bg" style="background-image:url(assets/math1.png)"></div>
+                        <div class="home-tile-bg" style="background-image:url('assets/math1.png')"></div>
                         <div class="home-tile-overlay"></div>
                         <div class="home-tile-icon">LCM</div>
                         <span class="home-tile-label">LCM</span>
                         <span class="home-tile-desc">Least common multiple calculator</span>
                     </div>
                     <div class="home-tile" data-mode="gcf">
-                        <div class="home-tile-bg" style="background-image:url(assets/math2.jpg)"></div>
+                        <div class="home-tile-bg" style="background-image:url('assets/math2.jpg')"></div>
                         <div class="home-tile-overlay"></div>
                         <div class="home-tile-icon">GCF</div>
                         <span class="home-tile-label">GCF</span>
                         <span class="home-tile-desc">Greatest common factor calculator</span>
                     </div>
                     <div class="home-tile" data-mode="matrix">
-                        <div class="home-tile-bg" style="background-image:url(assets/math3.jpg)"></div>
+                        <div class="home-tile-bg" style="background-image:url('assets/math3.jpg')"></div>
                         <div class="home-tile-overlay"></div>
                         <div class="home-tile-icon">⌗</div>
                         <span class="home-tile-label">Matrix</span>
                         <span class="home-tile-desc">2×2 and 3×3 matrix operations</span>
                     </div>
                     <div class="home-tile" data-mode="bignum">
-                        <div class="home-tile-bg" style="background-image:url(assets/math4.jpg)"></div>
+                        <div class="home-tile-bg" style="background-image:url('assets/math4.jpg')"></div>
                         <div class="home-tile-overlay"></div>
                         <div class="home-tile-icon">¹⁰</div>
                         <span class="home-tile-label">BigNum</span>
