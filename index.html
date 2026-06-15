@@ -376,6 +376,61 @@ button.active-key { transform: scale(0.95); box-shadow: 0 0 20px rgba(138,43,226
 .error-results .er-row { display: flex; justify-content: space-between; font-family: 'Share Tech Mono', monospace; font-size: 0.9rem; padding: 4px 0; }
 .error-results .er-row .er-label { color: var(--text-secondary); }
 .error-results .er-row .er-value { color: var(--accent-blue); font-weight: 600; }
+
+#mode-binary { max-width: 520px; }
+#mode-halflife { max-width: 540px; }
+#mode-quadratic { max-width: 520px; }
+#mode-logcalc { max-width: 480px; }
+.binary-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; align-items: center; margin-bottom: 12px; }
+.binary-grid input { padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(10,10,20,0.6); color: var(--text-primary); font-family: 'Share Tech Mono', monospace; font-size: 0.95rem; outline: none; width: 100%; }
+.binary-grid input:focus { border-color: var(--accent-purple); }
+.binary-grid .bin-op { font-size: 1.3rem; color: var(--accent-blue); font-weight: 700; padding: 0 4px; text-align: center; }
+.bin-op-select { display: flex; gap: 6px; margin-bottom: 10px; justify-content: center; }
+.bin-op-select button { padding: 6px 14px; font-size: 0.8rem; min-width: 44px; background: rgba(40,40,60,0.5); }
+.bin-op-select button.active-op { background: linear-gradient(135deg, rgba(0,191,255,0.5), rgba(30,144,255,0.5)); border-color: var(--accent-blue); }
+.bin-result { background: rgba(10,10,20,0.6); border: 1px solid var(--border-color); border-radius: 12px; padding: 14px 18px; margin-top: 10px; font-family: 'Share Tech Mono', monospace; font-size: 1.3rem; color: var(--accent-blue); text-align: center; }
+.bin-convert { display: flex; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
+.bin-convert .bc-group { flex: 1; min-width: 160px; }
+.bin-convert .bc-group label { display: block; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 4px; }
+.bin-convert .bc-row { display: flex; gap: 6px; align-items: center; }
+.bin-convert .bc-row input { flex: 1; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(10,10,20,0.6); color: var(--text-primary); font-family: 'Share Tech Mono', monospace; font-size: 0.85rem; outline: none; }
+.bin-convert .bc-row input:focus { border-color: var(--accent-purple); }
+.bin-convert .bc-row button { padding: 6px 12px; font-size: 0.75rem; }
+.bin-convert .bc-result { font-family: 'Share Tech Mono', monospace; font-size: 0.85rem; color: var(--accent-blue); margin-top: 3px; min-height: 20px; }
+
+.hl-fields { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
+.hl-row { display: flex; gap: 8px; align-items: center; }
+.hl-row label { font-size: 0.85rem; color: var(--text-secondary); min-width: 130px; }
+.hl-row input { flex: 1; padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(10,10,20,0.6); color: var(--text-primary); font-family: 'Share Tech Mono', monospace; font-size: 0.9rem; outline: none; }
+.hl-row input:focus { border-color: var(--accent-purple); }
+.hl-calc-btn { padding: 10px 24px; font-size: 0.9rem; background: linear-gradient(135deg, rgba(0,191,255,0.6), rgba(30,144,255,0.6)); align-self: center; margin-top: 4px; }
+.hl-result { background: rgba(10,10,20,0.6); border: 1px solid var(--border-color); border-radius: 12px; padding: 14px 18px; margin-top: 10px; text-align: center; font-family: 'Share Tech Mono', monospace; font-size: 1.2rem; color: var(--accent-blue); }
+.hl-convert { margin-top: 14px; }
+.hl-convert-title { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 8px; }
+.hl-conv-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.hl-conv-row label { font-size: 0.8rem; color: var(--text-secondary); min-width: 80px; }
+.hl-conv-row input { flex: 1; min-width: 80px; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(10,10,20,0.6); color: var(--text-primary); font-family: 'Share Tech Mono', monospace; font-size: 0.85rem; outline: none; }
+.hl-conv-row input:focus { border-color: var(--accent-purple); }
+
+.quad-fields { display: flex; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+.quad-fields .qf-group { flex: 1; min-width: 80px; text-align: center; }
+.quad-fields .qf-group label { display: block; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 4px; }
+.quad-fields .qf-group input { width: 100%; padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(10,10,20,0.6); color: var(--text-primary); font-family: 'Share Tech Mono', monospace; font-size: 1.1rem; text-align: center; outline: none; }
+.quad-fields .qf-group input:focus { border-color: var(--accent-purple); }
+.quad-result { background: rgba(10,10,20,0.6); border: 1px solid var(--border-color); border-radius: 12px; padding: 14px 18px; margin-top: 10px; }
+.quad-result .qr-formula { font-family: 'Share Tech Mono', monospace; font-size: 1rem; color: var(--text-secondary); text-align: center; margin-bottom: 8px; }
+.quad-result .qr-roots { font-family: 'Share Tech Mono', monospace; font-size: 1.2rem; color: var(--accent-blue); text-align: center; line-height: 1.7; }
+.quad-result .qr-detail { font-size: 0.8rem; color: var(--text-secondary); text-align: center; margin-top: 6px; }
+
+.log-fields { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
+.log-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.log-row label { font-size: 0.85rem; color: var(--text-secondary); min-width: 50px; }
+.log-row input { flex: 1; min-width: 60px; padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(10,10,20,0.6); color: var(--text-primary); font-family: 'Share Tech Mono', monospace; font-size: 0.95rem; outline: none; }
+.log-row input:focus { border-color: var(--accent-purple); }
+.log-row select { padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(10,10,20,0.6); color: var(--text-primary); font-size: 0.85rem; outline: none; cursor: pointer; }
+.log-row .log-eq { font-size: 1rem; color: var(--text-secondary); min-width: 20px; text-align: center; }
+.log-result { background: rgba(10,10,20,0.6); border: 1px solid var(--border-color); border-radius: 12px; padding: 14px 18px; text-align: center; font-family: 'Share Tech Mono', monospace; font-size: 1.3rem; color: var(--accent-blue); min-height: 50px; }
+.log-rules { margin-top: 12px; padding: 12px; background: rgba(10,10,20,0.4); border-radius: 8px; font-size: 0.75rem; color: var(--text-secondary); line-height: 1.6; }
 </style>
 </head>
 <body>
@@ -421,6 +476,22 @@ button.active-key { transform: scale(0.95); box-shadow: 0 0 20px rgba(138,43,226
             <a class="nav-item" data-mode="error">
                 <div class="nav-icon">±</div>
                 <span>Error</span>
+            </a>
+            <a class="nav-item" data-mode="binary">
+                <div class="nav-icon">01</div>
+                <span>Binary</span>
+            </a>
+            <a class="nav-item" data-mode="halflife">
+                <div class="nav-icon">λ</div>
+                <span>Half-Life</span>
+            </a>
+            <a class="nav-item" data-mode="quadratic">
+                <div class="nav-icon">x²</div>
+                <span>Quadratic</span>
+            </a>
+            <a class="nav-item" data-mode="logcalc">
+                <div class="nav-icon">log</div>
+                <span>Log</span>
             </a>
         </nav>
         <div class="sidebar-footer">CalcHub v2.0</div>
@@ -795,6 +866,112 @@ button.active-key { transform: scale(0.95); box-shadow: 0 0 20px rgba(138,43,226
                     <div class="er-row"><span class="er-label">Relative Error:</span><span class="er-value" id="err-rel">—</span></div>
                     <div class="er-row"><span class="er-label">Percentage Error:</span><span class="er-value" id="err-pct">—</span></div>
                     <div class="er-row" style="display:none;" id="err-negative-row"><span class="er-label">Signed Error:</span><span class="er-value" id="err-signed">—</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Binary Calculator -->
+        <section id="mode-binary" class="mode-section">
+            <div class="calculator-body">
+                <h3 style="font-size:0.9rem;font-weight:600;margin-bottom:12px;color:var(--accent-blue);">Binary Calculator</h3>
+                <div class="bin-op-select">
+                    <button class="active-op" data-binop="+">+</button>
+                    <button data-binop="-">−</button>
+                    <button data-binop="*">×</button>
+                    <button data-binop="/">÷</button>
+                </div>
+                <div class="binary-grid">
+                    <input type="text" id="bin-val1" value="1010" spellcheck="false">
+                    <div class="bin-op" id="bin-op-display">+</div>
+                    <input type="text" id="bin-val2" value="101" spellcheck="false">
+                </div>
+                <div class="bin-result" id="bin-result">1111</div>
+                <div class="bin-convert">
+                    <div class="bc-group">
+                        <label>Binary → Decimal</label>
+                        <div class="bc-row">
+                            <input type="text" id="bin-to-dec-in" value="1010" spellcheck="false">
+                            <button id="bin-to-dec-btn" style="background:rgba(0,191,255,0.3);padding:6px 12px;font-size:0.75rem;">→</button>
+                        </div>
+                        <div class="bc-result" id="bin-to-dec-out">10</div>
+                    </div>
+                    <div class="bc-group">
+                        <label>Decimal → Binary</label>
+                        <div class="bc-row">
+                            <input type="number" id="dec-to-bin-in" value="42">
+                            <button id="dec-to-bin-btn" style="background:rgba(0,191,255,0.3);padding:6px 12px;font-size:0.75rem;">→</button>
+                        </div>
+                        <div class="bc-result" id="dec-to-bin-out">101010</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Half-Life Calculator -->
+        <section id="mode-halflife" class="mode-section">
+            <div class="calculator-body">
+                <h3 style="font-size:0.9rem;font-weight:600;margin-bottom:12px;color:var(--accent-blue);">Half-Life Calculator</h3>
+                <div class="hl-fields">
+                    <div class="hl-row"><label>Initial (N₀)</label><input type="number" id="hl-n0" value="100"></div>
+                    <div class="hl-row"><label>Remaining (N(t))</label><input type="number" id="hl-nt" value="25"></div>
+                    <div class="hl-row"><label>Time (t)</label><input type="number" id="hl-time" value="11460"></div>
+                    <div class="hl-row"><label>Half-Life (t½)</label><input type="number" id="hl-half" value="5730"></div>
+                    <button class="hl-calc-btn" id="hl-calc">Calculate (leave target blank)</button>
+                </div>
+                <div class="hl-result" id="hl-result">t = 11460</div>
+                <div class="hl-convert">
+                    <div class="hl-convert-title">Half-Life, Mean Lifetime &amp; Decay Constant</div>
+                    <div class="hl-conv-row">
+                        <label>t½</label><input type="number" id="hl-cv-half" value="5730">
+                        <label>τ</label><input type="number" id="hl-cv-tau" value="" readonly>
+                        <label>λ</label><input type="number" id="hl-cv-lambda" value="" readonly>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quadratic Formula Calculator -->
+        <section id="mode-quadratic" class="mode-section">
+            <div class="calculator-body">
+                <h3 style="font-size:0.9rem;font-weight:600;margin-bottom:12px;color:var(--accent-blue);">Quadratic Formula Calculator</h3>
+                <div style="text-align:center;font-size:0.9rem;color:var(--text-secondary);margin-bottom:12px;">ax² + bx + c = 0</div>
+                <div class="quad-fields">
+                    <div class="qf-group"><label>a =</label><input type="number" id="quad-a" value="1"></div>
+                    <div class="qf-group"><label>b =</label><input type="number" id="quad-b" value="-3"></div>
+                    <div class="qf-group"><label>c =</label><input type="number" id="quad-c" value="-10"></div>
+                </div>
+                <button id="quad-calc" style="padding:8px 20px;font-size:0.85rem;background:linear-gradient(135deg,rgba(0,191,255,0.6),rgba(30,144,255,0.6));display:block;margin:0 auto 10px;">Solve</button>
+                <div class="quad-result">
+                    <div class="qr-formula" id="quad-formula">x = [−(−3) ± √((−3)² − 4·1·(−10))] / (2·1)</div>
+                    <div class="qr-roots" id="quad-roots">x = 5 &nbsp; x = −2</div>
+                    <div class="qr-detail" id="quad-detail">Discriminant: 49 &nbsp;|&nbsp; Two real roots</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Log Calculator -->
+        <section id="mode-logcalc" class="mode-section">
+            <div class="calculator-body">
+                <h3 style="font-size:0.9rem;font-weight:600;margin-bottom:12px;color:var(--accent-blue);">Log Calculator</h3>
+                <div class="log-fields" id="log-fields">
+                    <div class="log-row">
+                        <label>log</label>
+                        <select id="log-base">
+                            <option value="10">10</option>
+                            <option value="e">e</option>
+                            <option value="2">2</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                        <input type="number" id="log-custom-base" value="5" style="display:none;flex:0.5;min-width:50px;">
+                        <span class="log-eq">(</span>
+                        <input type="number" id="log-x" value="100">
+                        <span class="log-eq">) =</span>
+                        <input type="number" id="log-y" value="2" readonly>
+                    </div>
+                </div>
+                <div class="log-result" id="log-result">log₁₀(100) = 2</div>
+                <div class="log-rules">
+                    <b>Log Rules:</b> log(x·y) = log(x) + log(y) &nbsp;|&nbsp; log(x/y) = log(x) − log(y) &nbsp;|&nbsp; log(x<sup>y</sup>) = y·log(x)
                 </div>
             </div>
         </section>
@@ -2456,6 +2633,242 @@ class PercentErrorCalculator {
 }
 
 // ============================================================
+// BINARY CALCULATOR
+// ============================================================
+class BinaryCalculator {
+    constructor() {
+        this.op = '+';
+        this.v1 = document.getElementById('bin-val1');
+        this.v2 = document.getElementById('bin-val2');
+        this.opDisplay = document.getElementById('bin-op-display');
+        this.result = document.getElementById('bin-result');
+        this.bin2decIn = document.getElementById('bin-to-dec-in');
+        this.bin2decOut = document.getElementById('bin-to-dec-out');
+        this.dec2binIn = document.getElementById('dec-to-bin-in');
+        this.dec2binOut = document.getElementById('dec-to-bin-out');
+        this.init();
+    }
+
+    init() {
+        document.querySelectorAll('#mode-binary .bin-op-select button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('#mode-binary .bin-op-select button').forEach(b => b.classList.remove('active-op'));
+                btn.classList.add('active-op');
+                this.op = btn.dataset.binop;
+                this.opDisplay.textContent = btn.textContent;
+                this.calc();
+            });
+        });
+        [this.v1, this.v2].forEach(el => el.addEventListener('input', () => this.calc()));
+        document.getElementById('bin-to-dec-btn').addEventListener('click', () => this.binToDec());
+        document.getElementById('dec-to-bin-btn').addEventListener('click', () => this.decToBin());
+        this.bin2decIn.addEventListener('keydown', (e) => { if (e.key === 'Enter') this.binToDec(); });
+        this.dec2binIn.addEventListener('keydown', (e) => { if (e.key === 'Enter') this.decToBin(); });
+        this.calc(); this.binToDec(); this.decToBin();
+    }
+
+    toDec(s) { return parseInt(s.replace(/[^01]/g, ''), 2) || 0; }
+    toBin(n) { return (n >>> 0).toString(2); }
+
+    calc() {
+        let a = this.toDec(this.v1.value);
+        let b = this.toDec(this.v2.value);
+        let r;
+        switch (this.op) {
+            case '+': r = a + b; break;
+            case '-': r = a - b; break;
+            case '*': r = a * b; break;
+            case '/': r = b !== 0 ? Math.floor(a / b) : NaN; break;
+        }
+        if (isNaN(r) || !isFinite(r)) { this.result.textContent = 'Error'; return; }
+        const bin = r < 0 ? '-' + this.toBin(Math.abs(r)) : this.toBin(r);
+        this.result.textContent = bin + ' (decimal: ' + r + ')';
+    }
+
+    binToDec() {
+        const s = this.bin2decIn.value.replace(/[^01]/g, '');
+        if (!s) { this.bin2decOut.textContent = '0'; return; }
+        this.bin2decOut.textContent = parseInt(s, 2).toString();
+    }
+
+    decToBin() {
+        const n = parseInt(this.dec2binIn.value);
+        if (isNaN(n)) { this.dec2binOut.textContent = '0'; return; }
+        this.dec2binOut.textContent = n < 0 ? '-' + this.toBin(Math.abs(n)) : this.toBin(n);
+    }
+}
+
+// ============================================================
+// HALF-LIFE CALCULATOR
+// ============================================================
+class HalfLifeCalculator {
+    constructor() {
+        this.n0 = document.getElementById('hl-n0');
+        this.nt = document.getElementById('hl-nt');
+        this.time = document.getElementById('hl-time');
+        this.half = document.getElementById('hl-half');
+        this.result = document.getElementById('hl-result');
+        this.cvHalf = document.getElementById('hl-cv-half');
+        this.cvTau = document.getElementById('hl-cv-tau');
+        this.cvLambda = document.getElementById('hl-cv-lambda');
+        this.init();
+    }
+
+    init() {
+        document.getElementById('hl-calc').addEventListener('click', () => this.calc());
+        [this.n0, this.nt, this.time, this.half].forEach(el => el.addEventListener('keydown', (e) => { if (e.key === 'Enter') this.calc(); }));
+        this.cvHalf.addEventListener('input', () => this.convert());
+        this.calc(); this.convert();
+    }
+
+    calc() {
+        const n0 = parseFloat(this.n0.value);
+        const nt = parseFloat(this.nt.value);
+        const t = parseFloat(this.time.value);
+        const h = parseFloat(this.half.value);
+        const missing = [this.n0, this.nt, this.time, this.half].filter(el => el.value.trim() === '');
+        if (missing.length !== 1) { this.result.textContent = 'Leave exactly one field blank to calculate it.'; return; }
+
+        if (this.n0.value === '') {
+            if (!isNaN(nt) && !isNaN(t) && !isNaN(h) && h > 0) {
+                const val = nt / Math.pow(0.5, t / h);
+                this.result.textContent = 'N₀ = ' + val.toPrecision(6);
+            }
+        } else if (this.nt.value === '') {
+            if (!isNaN(n0) && !isNaN(t) && !isNaN(h) && h > 0) {
+                const val = n0 * Math.pow(0.5, t / h);
+                this.result.textContent = 'N(t) = ' + val.toPrecision(6);
+            }
+        } else if (this.time.value === '') {
+            if (!isNaN(n0) && !isNaN(nt) && !isNaN(h) && h > 0 && nt > 0) {
+                const val = h * (Math.log(nt / n0) / Math.log(0.5));
+                this.result.textContent = 't = ' + val.toPrecision(6);
+            }
+        } else if (this.half.value === '') {
+            if (!isNaN(n0) && !isNaN(nt) && !isNaN(t) && nt > 0 && n0 > 0) {
+                const val = t / (Math.log(nt / n0) / Math.log(0.5));
+                this.result.textContent = 't½ = ' + val.toPrecision(6);
+            }
+        }
+    }
+
+    convert() {
+        const h = parseFloat(this.cvHalf.value);
+        if (isNaN(h) || h <= 0) { this.cvTau.value = ''; this.cvLambda.value = ''; return; }
+        const tau = h / Math.LN2;
+        const lambda = Math.LN2 / h;
+        this.cvTau.value = tau.toPrecision(6);
+        this.cvLambda.value = lambda.toPrecision(6);
+    }
+}
+
+// ============================================================
+// QUADRATIC FORMULA CALCULATOR
+// ============================================================
+class QuadraticCalculator {
+    constructor() {
+        this.a = document.getElementById('quad-a');
+        this.b = document.getElementById('quad-b');
+        this.c = document.getElementById('quad-c');
+        this.formula = document.getElementById('quad-formula');
+        this.roots = document.getElementById('quad-roots');
+        this.detail = document.getElementById('quad-detail');
+        this.init();
+    }
+
+    init() {
+        document.getElementById('quad-calc').addEventListener('click', () => this.calc());
+        [this.a, this.b, this.c].forEach(el => el.addEventListener('keydown', (e) => { if (e.key === 'Enter') this.calc(); }));
+        this.calc();
+    }
+
+    fmt(n) {
+        if (Number.isInteger(n)) return n.toString();
+        return parseFloat(n.toPrecision(6)).toString();
+    }
+
+    calc() {
+        let a = parseFloat(this.a.value) || 0;
+        let b = parseFloat(this.b.value) || 0;
+        let c = parseFloat(this.c.value) || 0;
+        if (a === 0) {
+            this.formula.textContent = 'Not a quadratic equation (a = 0).';
+            this.roots.textContent = '';
+            this.detail.textContent = '';
+            return;
+        }
+        const disc = b * b - 4 * a * c;
+        const aStr = this.fmt(a), bStr = this.fmt(b), cStr = this.fmt(c);
+        const negB = b < 0 ? `−(${this.fmt(-b)})` : `−${this.fmt(b)}`;
+        const discSign = disc < 0 ? '+' : '−';
+        const absDisc = Math.abs(disc);
+        this.formula.textContent = `x = [${negB} ± √(${bStr}² − 4·${aStr}·${cStr})] / (2·${aStr})`;
+
+        if (disc >= 0) {
+            const sqrtDisc = Math.sqrt(disc);
+            const x1 = (-b + sqrtDisc) / (2 * a);
+            const x2 = (-b - sqrtDisc) / (2 * a);
+            this.roots.innerHTML = `x = ${this.fmt(x1)} &nbsp;&nbsp; x = ${this.fmt(x2)}`;
+            this.detail.textContent = `Discriminant: ${this.fmt(disc)}  |  Two real roots`;
+        } else {
+            const realPart = -b / (2 * a);
+            const imagPart = Math.sqrt(-disc) / (2 * a);
+            const rp = this.fmt(realPart);
+            const ip = this.fmt(imagPart);
+            this.roots.innerHTML = `x = ${rp} + ${ip}i &nbsp;&nbsp; x = ${rp} − ${ip}i`;
+            this.detail.textContent = `Discriminant: ${this.fmt(disc)}  |  Two complex roots`;
+        }
+    }
+}
+
+// ============================================================
+// LOG CALCULATOR
+// ============================================================
+class LogCalculator {
+    constructor() {
+        this.baseSelect = document.getElementById('log-base');
+        this.customBase = document.getElementById('log-custom-base');
+        this.x = document.getElementById('log-x');
+        this.y = document.getElementById('log-y');
+        this.result = document.getElementById('log-result');
+        this.init();
+    }
+
+    init() {
+        this.baseSelect.addEventListener('change', () => {
+            this.customBase.style.display = this.baseSelect.value === 'custom' ? 'block' : 'none';
+            this.calc();
+        });
+        this.customBase.addEventListener('input', () => this.calc());
+        [this.x].forEach(el => el.addEventListener('input', () => this.calc()));
+        this.calc();
+    }
+
+    calc() {
+        const baseVal = this.baseSelect.value;
+        let base;
+        if (baseVal === 'e') base = Math.E;
+        else if (baseVal === 'custom') base = parseFloat(this.customBase.value);
+        else base = parseInt(baseVal);
+        const xVal = parseFloat(this.x.value);
+        if (isNaN(base) || base <= 0 || base === 1 || isNaN(xVal) || xVal <= 0) {
+            this.result.textContent = 'Invalid input';
+            this.y.value = '';
+            return;
+        }
+        const yVal = Math.log(xVal) / Math.log(base);
+        this.y.value = yVal.toPrecision(10).replace(/\.?0+$/, '');
+        const baseLabel = baseVal === 'e' ? 'e' : baseVal === 'custom' ? this.customBase.value || '?' : base;
+        this.result.textContent = `log${baseLabel !== '10' ? '₍' + baseLabel + '₎' : ''}(${xVal}) = ${this.fmt(yVal)}`;
+    }
+
+    fmt(n) {
+        if (Math.abs(n) > 1e9 || (Math.abs(n) < 1e-6 && n !== 0)) return n.toExponential(4);
+        return parseFloat(n.toPrecision(10)).toString();
+    }
+}
+
+// ============================================================
 // APP - Navigation Controller
 // ============================================================
 class App {
@@ -2470,6 +2883,10 @@ class App {
         this.percent = new PercentCalculator();
         this.random = new RandomGenerator();
         this.error = new PercentErrorCalculator();
+        this.binary = new BinaryCalculator();
+        this.halflife = new HalfLifeCalculator();
+        this.quadratic = new QuadraticCalculator();
+        this.logcalc = new LogCalculator();
     }
 
     initNav() {
