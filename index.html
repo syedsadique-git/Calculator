@@ -473,13 +473,7 @@ button.active-key { transform: scale(0.95); box-shadow: 0 0 20px rgba(138,43,226
                         <button id="graph-reset">Reset</button>
                         <button id="graph-zoom-in">+</button>
                     </div>
-                    <div class="graph-multi">
-                        <div class="graph-multi-row">
-                            <input type="text" class="graph-fn-extra" placeholder="f(x) = " spellcheck="false">
-                            <input type="color" class="graph-fn-color" value="#ff6b6b">
-                            <button class="remove-fn" style="display:none;">✕</button>
-                        </div>
-                    </div>
+                    <div class="graph-multi" id="graph-multi-container"></div>
                     <button class="graph-add-fn" id="graph-add-fn">+ Add Function</button>
                 </div>
             </div>
@@ -1142,92 +1136,105 @@ class GraphCalculator {
         this.plotBtn = document.getElementById('graph-plot');
         this.coordsEl = document.getElementById('graph-coords');
         this.rangeEl = document.getElementById('graph-range');
-        this.functions = [];
+        this.multiContainer = document.getElementById('graph-multi-container');
+        this.functions = [{ expr: 'sin(x)', color: '#00bfff' }];
         this.xMin = -10; this.xMax = 10; this.yMin = -10; this.yMax = 10;
         this.isDragging = false;
         this.dragStartX = 0; this.dragStartY = 0;
         this.dragXMin = 0; this.dragYMin = 0;
+        this.nextColorIdx = 1;
+        this.COLORS = ['#ff6b6b', '#ffd93d', '#6bcb77', '#4d96ff', '#ff6bff', '#ff9f43', '#00d2d3', '#f368e0'];
         this.init();
     }
 
     init() {
-        this.functions.push({ expr: 'sin(x)', color: '#00bfff' });
-        this.plotBtn.addEventListener('click', () => this.addFuncFromInput());
-        this.fnInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') this.addFuncFromInput(); });
+        this.plotBtn.addEventListener('click', () => this.plotMain());
+        this.fnInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') this.plotMain(); });
         document.getElementById('graph-zoom-in').addEventListener('click', () => this.zoom(0.8));
         document.getElementById('graph-zoom-out').addEventListener('click', () => this.zoom(1.25));
         document.getElementById('graph-reset').addEventListener('click', () => { this.xMin = -10; this.xMax = 10; this.yMin = -10; this.yMax = 10; this.draw(); });
-        document.getElementById('graph-add-fn').addEventListener('click', () => this.addFunctionRow());
+        document.getElementById('graph-add-fn').addEventListener('click', () => this.addExtraFunction());
         this.canvas.addEventListener('mousemove', (e) => this.onMouseMove(e));
         this.canvas.addEventListener('mousedown', (e) => this.onMouseDown(e));
         this.canvas.addEventListener('mouseup', () => this.onMouseUp());
         this.canvas.addEventListener('mouseleave', () => this.onMouseUp());
         this.canvas.addEventListener('wheel', (e) => { e.preventDefault(); const d = e.deltaY > 0 ? 1.1 : 0.9; this.zoom(d, e); }, { passive: false });
         this.canvas.addEventListener('contextmenu', (e) => e.preventDefault());
-        this.setupExistingRows();
         this.draw();
     }
 
-    setupExistingRows() {
-        const rows = document.querySelectorAll('.graph-multi-row');
-        rows.forEach((row, i) => {
-            if (i === 0) {
-                const input = row.querySelector('.graph-fn-extra');
-                const color = row.querySelector('.graph-fn-color');
-                const removeBtn = row.querySelector('.remove-fn');
-                input.addEventListener('keydown', (e) => { if (e.key === 'Enter') this.updateFunc(1, input.value, color.value); });
-                input.addEventListener('input', () => this.updateFunc(1, input.value, color.value));
-                color.addEventListener('input', () => this.updateFunc(1, input.value, color.value));
-                removeBtn.style.display = 'none';
-            }
-        });
+    getColor() {
+        const c = this.COLORS[this.nextColorIdx % this.COLORS.length];
+        this.nextColorIdx++;
+        return c;
     }
 
-    addFuncFromInput() {
+    plotMain() {
         let expr = this.fnInput.value.trim();
         if (!expr) return;
-        if (this.functions.length === 0 || (this.functions.length === 1 && this.functions[0].expr === 'sin(x)')) {
-            this.functions[0] = { expr, color: '#00bfff' };
-        } else {
-            this.functions.push({ expr, color: this.randomColor() });
-            this.addFunctionRow(this.functions.length - 1);
-        }
+        this.functions[0] = { expr, color: '#00bfff' };
         this.fnInput.value = '';
         this.draw();
     }
 
-    randomColor() {
-        const colors = ['#ff6b6b', '#ffd93d', '#6bcb77', '#4d96ff', '#ff6bff', '#ff9f43', '#00d2d3', '#f368e0'];
-        return colors[this.functions.length % colors.length];
-    }
-
-    addFunctionRow(index) {
-        const container = document.querySelector('.graph-multi');
+    addExtraFunction() {
+        const idx = this.functions.length;
+        if (idx > 8) return;
+        const color = this.getColor();
+        this.functions.push({ expr: '', color });
         const row = document.createElement('div');
         row.className = 'graph-multi-row';
-        const fi = index !== undefined ? index : this.functions.length - 1;
-        const fn = this.functions[fi] || { expr: '', color: this.randomColor() };
+        row.dataset.idx = idx;
         row.innerHTML = `
-            <input type="text" class="graph-fn-extra" placeholder="f(x) = " value="${fn.expr}" spellcheck="false">
-            <input type="color" class="graph-fn-color" value="${fn.color}">
+            <input type="text" class="graph-fn-extra" placeholder="f(x) = " spellcheck="false">
+            <input type="color" class="graph-fn-color" value="${color}">
             <button class="remove-fn">✕</button>
         `;
-        container.appendChild(row);
+        this.multiContainer.appendChild(row);
         const input = row.querySelector('.graph-fn-extra');
-        const color = row.querySelector('.graph-fn-color');
+        const colorInput = row.querySelector('.graph-fn-color');
         const removeBtn = row.querySelector('.remove-fn');
-        const idx = container.querySelectorAll('.graph-multi-row').length - 1;
-        input.addEventListener('keydown', (e) => { if (e.key === 'Enter') this.updateFunc(idx, input.value, color.value); });
-        input.addEventListener('input', () => this.updateFunc(idx, input.value, color.value));
-        color.addEventListener('input', () => this.updateFunc(idx, input.value, color.value));
-        removeBtn.addEventListener('click', () => { this.functions.splice(idx, 1); row.remove(); this.draw(); });
+        input.onkeydown = (e) => { if (e.key === 'Enter') this.updateExtra(idx); };
+        input.oninput = () => this.updateExtra(idx);
+        colorInput.oninput = () => this.updateExtra(idx);
+        removeBtn.onclick = () => {
+            this.functions.splice(idx, 1);
+            row.remove();
+            this.reindexRows();
+            this.draw();
+        };
+        this.draw();
     }
 
-    updateFunc(index, expr, color) {
-        if (index < this.functions.length) {
-            if (expr) { this.functions[index] = { expr, color }; }
-            this.draw();
-        }
+    updateExtra(idx) {
+        if (idx >= this.functions.length) return;
+        const row = this.multiContainer.querySelector(`.graph-multi-row[data-idx="${idx}"]`);
+        if (!row) return;
+        const input = row.querySelector('.graph-fn-extra');
+        const color = row.querySelector('.graph-fn-color');
+        this.functions[idx] = { expr: input.value, color: color.value };
+        this.draw();
+    }
+
+    reindexRows() {
+        const rows = this.multiContainer.querySelectorAll('.graph-multi-row');
+        rows.forEach((row, i) => {
+            row.dataset.idx = i;
+            const input = row.querySelector('.graph-fn-extra');
+            const color = row.querySelector('.graph-fn-color');
+            const removeBtn = row.querySelector('.remove-fn');
+            input.oninput = null; input.onkeydown = null; color.oninput = null; removeBtn.onclick = null;
+            const n = i;
+            input.onkeydown = (e) => { if (e.key === 'Enter') this.updateExtra(n); };
+            input.oninput = () => this.updateExtra(n);
+            color.oninput = () => this.updateExtra(n);
+            removeBtn.onclick = () => {
+                this.functions.splice(n, 1);
+                row.remove();
+                this.reindexRows();
+                this.draw();
+            };
+        });
     }
 
     zoom(factor, event) {
@@ -1282,6 +1289,22 @@ class GraphCalculator {
 
     onMouseUp() { this.isDragging = false; }
 
+    compileExpr(expr) {
+        let s = expr
+            .replace(/sin\(/g, 'Math.sin(')
+            .replace(/cos\(/g, 'Math.cos(')
+            .replace(/tan\(/g, 'Math.tan(')
+            .replace(/log\(/g, 'Math.log10(')
+            .replace(/ln\(/g, 'Math.log(')
+            .replace(/sqrt\(/g, 'Math.sqrt(')
+            .replace(/abs\(/g, 'Math.abs(')
+            .replace(/exp\(/g, 'Math.exp(')
+            .replace(/\^/g, '**')
+            .replace(/π/g, Math.PI.toString());
+        s = s.replace(/(^|[\+\-\*\/\(\)\^,])e(?=[\+\-\*\/\(\)\^,]|$)/g, '$1' + Math.E.toString());
+        return s;
+    }
+
     draw() {
         const { ctx, canvas } = this;
         const W = canvas.width, H = canvas.height;
@@ -1291,18 +1314,13 @@ class GraphCalculator {
         if (xRange <= 0 || yRange <= 0) return;
         this.rangeEl.textContent = `[${this.xMin.toFixed(1)}, ${this.xMax.toFixed(1)}] × [${this.yMin.toFixed(1)}, ${this.yMax.toFixed(1)}]`;
 
-        // Background
         const grad = ctx.createLinearGradient(0, 0, 0, H);
-        grad.addColorStop(0, '#0a0a14');
-        grad.addColorStop(1, '#12121e');
-        ctx.fillStyle = grad;
-        ctx.fillRect(0, 0, W, H);
+        grad.addColorStop(0, '#0a0a14'); grad.addColorStop(1, '#12121e');
+        ctx.fillStyle = grad; ctx.fillRect(0, 0, W, H);
 
-        // Grid
         const xStep = this.niceStep(xRange / 6);
         const yStep = this.niceStep(yRange / 6);
-        ctx.strokeStyle = 'rgba(255,255,255,0.06)';
-        ctx.lineWidth = 1;
+        ctx.strokeStyle = 'rgba(255,255,255,0.06)'; ctx.lineWidth = 1;
         for (let x = Math.ceil(this.xMin / xStep) * xStep; x <= this.xMax; x += xStep) {
             const px = (x - this.xMin) / xRange * W;
             ctx.beginPath(); ctx.moveTo(px, 0); ctx.lineTo(px, H); ctx.stroke();
@@ -1312,9 +1330,7 @@ class GraphCalculator {
             ctx.beginPath(); ctx.moveTo(0, py); ctx.lineTo(W, py); ctx.stroke();
         }
 
-        // Axis
-        ctx.strokeStyle = 'rgba(255,255,255,0.2)';
-        ctx.lineWidth = 1.5;
+        ctx.strokeStyle = 'rgba(255,255,255,0.2)'; ctx.lineWidth = 1.5;
         if (this.xMin <= 0 && this.xMax >= 0) {
             const px = (0 - this.xMin) / xRange * W;
             ctx.beginPath(); ctx.moveTo(px, 0); ctx.lineTo(px, H); ctx.stroke();
@@ -1324,69 +1340,45 @@ class GraphCalculator {
             ctx.beginPath(); ctx.moveTo(0, py); ctx.lineTo(W, py); ctx.stroke();
         }
 
-        // Labels
-        ctx.fillStyle = 'rgba(255,255,255,0.3)';
-        ctx.font = '10px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,0.3)'; ctx.font = '10px Inter, sans-serif';
         ctx.textAlign = 'center';
         for (let x = Math.ceil(this.xMin / xStep) * xStep; x <= this.xMax; x += xStep) {
             if (Math.abs(x) < xStep * 0.01) continue;
-            const px = (x - this.xMin) / xRange * W;
-            ctx.fillText(this.fmtNum(x), px, H - 6);
+            ctx.fillText(this.fmtNum(x), (x - this.xMin) / xRange * W, H - 6);
         }
         ctx.textAlign = 'right';
         for (let y = Math.ceil(this.yMin / yStep) * yStep; y <= this.yMax; y += yStep) {
             if (Math.abs(y) < yStep * 0.01) continue;
-            const py = H - (y - this.yMin) / yRange * H;
-            ctx.fillText(this.fmtNum(y), 36, py + 4);
+            ctx.fillText(this.fmtNum(y), 36, H - (y - this.yMin) / yRange * H + 4);
         }
 
-        // Functions
-        this.functions.forEach((fn, fi) => {
+        this.functions.forEach((fn) => {
             if (!fn.expr) return;
-            ctx.strokeStyle = fn.color;
-            ctx.lineWidth = 2.5;
-            ctx.shadowColor = fn.color + '40';
-            ctx.shadowBlur = 8;
+            ctx.strokeStyle = fn.color; ctx.lineWidth = 2.5;
+            ctx.shadowColor = fn.color + '40'; ctx.shadowBlur = 8;
             ctx.beginPath();
             let first = true;
+            let compiled;
+            try { compiled = this.compileExpr(fn.expr); } catch(e) { return; }
             for (let px = 0; px <= W; px += 1) {
                 const x = this.xMin + (px / W) * xRange;
                 let yVal;
-                try {
-                    const mathExpr = fn.expr
-                        .replace(/sin\(/g, 'Math.sin(')
-                        .replace(/cos\(/g, 'Math.cos(')
-                        .replace(/tan\(/g, 'Math.tan(')
-                        .replace(/log\(/g, 'Math.log10(')
-                        .replace(/ln\(/g, 'Math.log(')
-                        .replace(/sqrt\(/g, 'Math.sqrt(')
-                        .replace(/abs\(/g, 'Math.abs(')
-                        .replace(/exp\(/g, 'Math.exp(')
-                        .replace(/\^/g, '**')
-                        .replace(/π/g, Math.PI.toString())
-                        .replace(/e(?![a-z])/g, Math.E.toString());
-                    yVal = Function('x', '"use strict"; return (' + mathExpr + ')')(x);
-                } catch(e) { first = true; return; }
+                try { yVal = Function('x', '"use strict"; return (' + compiled + ')')(x); }
+                catch(e) { first = true; continue; }
                 if (yVal === undefined || yVal === null || !isFinite(yVal)) { first = true; continue; }
                 const py = H - (yVal - this.yMin) / yRange * H;
                 if (py < -1000 || py > H + 1000) { first = true; continue; }
                 if (first) { ctx.moveTo(px, py); first = false; }
                 else ctx.lineTo(px, py);
             }
-            ctx.stroke();
-            ctx.shadowBlur = 0;
+            ctx.stroke(); ctx.shadowBlur = 0;
         });
     }
 
     niceStep(range) {
-        const rough = range;
-        const mag = Math.pow(10, Math.floor(Math.log10(rough)));
-        const norm = rough / mag;
-        let nice;
-        if (norm < 1.5) nice = 1;
-        else if (norm < 3.5) nice = 2;
-        else if (norm < 7.5) nice = 5;
-        else nice = 10;
+        const mag = Math.pow(10, Math.floor(Math.log10(range)));
+        const norm = range / mag;
+        let nice = norm < 1.5 ? 1 : norm < 3.5 ? 2 : norm < 7.5 ? 5 : 10;
         return nice * mag;
     }
 
