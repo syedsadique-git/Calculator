@@ -431,6 +431,58 @@ button.active-key { transform: scale(0.95); box-shadow: 0 0 20px rgba(138,43,226
 .log-row .log-eq { font-size: 1rem; color: var(--text-secondary); min-width: 20px; text-align: center; }
 .log-result { background: rgba(10,10,20,0.6); border: 1px solid var(--border-color); border-radius: 12px; padding: 14px 18px; text-align: center; font-family: 'Share Tech Mono', monospace; font-size: 1.3rem; color: var(--accent-blue); min-height: 50px; }
 .log-rules { margin-top: 12px; padding: 12px; background: rgba(10,10,20,0.4); border-radius: 8px; font-size: 0.75rem; color: var(--text-secondary); line-height: 1.6; }
+
+#mode-rounding { max-width: 500px; }
+#mode-lcm { max-width: 500px; }
+#mode-gcf { max-width: 500px; }
+#mode-matrix { max-width: 600px; }
+#mode-bignum { max-width: 540px; }
+
+.rd-inp { display: flex; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; align-items: center; }
+.rd-inp input[type="text"] { flex: 2; min-width: 160px; padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(10,10,20,0.6); color: var(--text-primary); font-family: 'Share Tech Mono', monospace; font-size: 0.95rem; outline: none; }
+.rd-inp input[type="text"]:focus { border-color: var(--accent-purple); }
+.rd-inp select { padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(10,10,20,0.6); color: var(--text-primary); font-size: 0.85rem; outline: none; cursor: pointer; }
+.rd-mode { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+.rd-mode button { padding: 6px 12px; font-size: 0.75rem; background: rgba(40,40,60,0.5); }
+.rd-mode button.active-op { background: linear-gradient(135deg,rgba(0,191,255,0.5),rgba(30,144,255,0.5)); border-color: var(--accent-blue); }
+.rd-result { background: rgba(10,10,20,0.6); border: 1px solid var(--border-color); border-radius: 12px; padding: 14px 18px; text-align: center; font-family: 'Share Tech Mono', monospace; font-size: 1.3rem; color: var(--accent-blue); min-height: 50px; }
+
+.lcm-inp { margin-bottom: 12px; }
+.lcm-inp label { display: block; font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 4px; }
+.lcm-inp input[type="text"] { width: 100%; padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(10,10,20,0.6); color: var(--text-primary); font-family: 'Share Tech Mono', monospace; font-size: 0.95rem; outline: none; }
+.lcm-inp input[type="text"]:focus { border-color: var(--accent-purple); }
+.lcm-btn { padding: 8px 20px; font-size: 0.85rem; background: linear-gradient(135deg,rgba(0,191,255,0.6),rgba(30,144,255,0.6)); display:block; margin:0 auto 10px; }
+.lcm-result { background: rgba(10,10,20,0.6); border: 1px solid var(--border-color); border-radius: 12px; padding: 14px 18px; text-align: center; font-family: 'Share Tech Mono', monospace; font-size: 1.3rem; color: var(--accent-blue); min-height: 50px; }
+.lcm-detail { font-size: 0.8rem; color: var(--text-secondary); text-align: center; margin-top: 6px; }
+
+.matrix-controls { display: flex; gap: 10px; margin-bottom: 12px; align-items: center; flex-wrap: wrap; }
+.matrix-controls select { padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(10,10,20,0.6); color: var(--text-primary); font-size: 0.8rem; outline: none; cursor: pointer; }
+.matrix-controls button { padding: 6px 12px; font-size: 0.8rem; background: rgba(40,40,60,0.5); }
+.matrix-controls button.active-op { background: linear-gradient(135deg,rgba(0,191,255,0.5),rgba(30,144,255,0.5)); border-color: var(--accent-blue); }
+.matrix-tables { display: flex; gap: 16px; margin-bottom: 12px; flex-wrap: wrap; justify-content: center; }
+.matrix-tables .mt-group { text-align: center; }
+.matrix-tables .mt-group label { display: block; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 4px; }
+.matrix-tables table { border-collapse: collapse; }
+.matrix-tables td { padding: 2px; }
+.matrix-tables td input { width: 52px; height: 36px; text-align: center; border: 1px solid var(--border-color); border-radius: 4px; background: rgba(10,10,20,0.6); color: var(--text-primary); font-family: 'Share Tech Mono', monospace; font-size: 0.85rem; outline: none; }
+.matrix-tables td input:focus { border-color: var(--accent-purple); }
+.matrix-op-row { display: flex; gap: 8px; margin-bottom: 10px; justify-content: center; flex-wrap: wrap; }
+.matrix-op-row button { padding: 6px 14px; font-size: 0.8rem; background: rgba(40,40,60,0.5); }
+.matrix-op-row button.active-op { background: linear-gradient(135deg,rgba(0,191,255,0.5),rgba(30,144,255,0.5)); border-color: var(--accent-blue); }
+.matrix-result { background: rgba(10,10,20,0.6); border: 1px solid var(--border-color); border-radius: 12px; padding: 14px 18px; min-height: 60px; text-align: center; overflow-x: auto; }
+.matrix-result .mr-label { font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 4px; }
+.matrix-result .mr-val { font-family: 'Share Tech Mono', monospace; font-size: 1rem; color: var(--accent-blue); line-height: 1.8; }
+
+.bn-inp { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+.bn-row { display: flex; gap: 8px; align-items: center; }
+.bn-row label { font-size: 0.8rem; color: var(--text-secondary); min-width: 20px; }
+.bn-row input[type="text"] { flex: 1; padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(10,10,20,0.6); color: var(--text-primary); font-family: 'Share Tech Mono', monospace; font-size: 0.9rem; outline: none; }
+.bn-row input[type="text"]:focus { border-color: var(--accent-purple); }
+.bn-row select { padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(10,10,20,0.6); color: var(--text-primary); font-size: 0.8rem; outline: none; cursor: pointer; }
+.bn-ops { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; justify-content: center; }
+.bn-ops button { padding: 6px 14px; font-size: 0.8rem; background: rgba(40,40,60,0.5); min-width: 44px; }
+.bn-ops button.active-op { background: linear-gradient(135deg,rgba(0,191,255,0.5),rgba(30,144,255,0.5)); border-color: var(--accent-blue); }
+.bn-result { background: rgba(10,10,20,0.6); border: 1px solid var(--border-color); border-radius: 12px; padding: 14px 18px; font-family: 'Share Tech Mono', monospace; font-size: 0.95rem; color: var(--accent-blue); min-height: 50px; word-wrap: break-word; max-height: 300px; overflow-y: auto; }
 </style>
 </head>
 <body>
@@ -492,6 +544,26 @@ button.active-key { transform: scale(0.95); box-shadow: 0 0 20px rgba(138,43,226
             <a class="nav-item" data-mode="logcalc">
                 <div class="nav-icon">log</div>
                 <span>Log</span>
+            </a>
+            <a class="nav-item" data-mode="rounding">
+                <div class="nav-icon">⌵</div>
+                <span>Round</span>
+            </a>
+            <a class="nav-item" data-mode="lcm">
+                <div class="nav-icon">LCM</div>
+                <span>LCM</span>
+            </a>
+            <a class="nav-item" data-mode="gcf">
+                <div class="nav-icon">GCF</div>
+                <span>GCF</span>
+            </a>
+            <a class="nav-item" data-mode="matrix">
+                <div class="nav-icon">⌗</div>
+                <span>Matrix</span>
+            </a>
+            <a class="nav-item" data-mode="bignum">
+                <div class="nav-icon">¹⁰</div>
+                <span>BigNum</span>
             </a>
         </nav>
         <div class="sidebar-footer">CalcHub v2.0</div>
@@ -973,6 +1045,116 @@ button.active-key { transform: scale(0.95); box-shadow: 0 0 20px rgba(138,43,226
                 <div class="log-rules">
                     <b>Log Rules:</b> log(x·y) = log(x) + log(y) &nbsp;|&nbsp; log(x/y) = log(x) − log(y) &nbsp;|&nbsp; log(x<sup>y</sup>) = y·log(x)
                 </div>
+            </div>
+        </section>
+
+        <!-- Rounding Calculator -->
+        <section id="mode-rounding" class="mode-section">
+            <div class="calculator-body">
+                <h3 style="font-size:0.9rem;font-weight:600;margin-bottom:12px;color:var(--accent-blue);">Rounding Calculator</h3>
+                <div class="rd-inp">
+                    <input type="text" id="rd-num" value="3.1415926535" spellcheck="false">
+                    <select id="rd-prec">
+                        <option value="0">Ones (0)</option>
+                        <option value="1" selected>Tenths (1)</option>
+                        <option value="2">Hundredths (2)</option>
+                        <option value="3">Thousandths (3)</option>
+                        <option value="4">Ten-Thousandths (4)</option>
+                        <option value="-1">Tens (−1)</option>
+                        <option value="-2">Hundreds (−2)</option>
+                        <option value="-3">Thousands (−3)</option>
+                    </select>
+                </div>
+                <div class="rd-mode">
+                    <button class="active-op" data-rdmode="half-up">Half Up</button>
+                    <button data-rdmode="half-down">Half Down</button>
+                    <button data-rdmode="ceil">Ceiling</button>
+                    <button data-rdmode="floor">Floor</button>
+                    <button data-rdmode="even">Half Even</button>
+                    <button data-rdmode="odd">Half Odd</button>
+                    <button data-rdmode="away">Away Zero</button>
+                    <button data-rdmode="toward">Toward Zero</button>
+                </div>
+                <div class="rd-result" id="rd-result">3.1</div>
+            </div>
+        </section>
+
+        <!-- LCM Calculator -->
+        <section id="mode-lcm" class="mode-section">
+            <div class="calculator-body">
+                <h3 style="font-size:0.9rem;font-weight:600;margin-bottom:12px;color:var(--accent-blue);">Least Common Multiple</h3>
+                <div class="lcm-inp">
+                    <label>Enter numbers separated by commas</label>
+                    <input type="text" id="lcm-nums" value="12, 18, 24" spellcheck="false">
+                </div>
+                <button class="lcm-btn" id="lcm-calc">Calculate LCM</button>
+                <div class="lcm-result" id="lcm-result">LCM = 72</div>
+                <div class="lcm-detail" id="lcm-detail"></div>
+            </div>
+        </section>
+
+        <!-- GCF Calculator -->
+        <section id="mode-gcf" class="mode-section">
+            <div class="calculator-body">
+                <h3 style="font-size:0.9rem;font-weight:600;margin-bottom:12px;color:var(--accent-blue);">Greatest Common Factor</h3>
+                <div class="lcm-inp">
+                    <label>Enter numbers separated by commas</label>
+                    <input type="text" id="gcf-nums" value="24, 36, 48" spellcheck="false">
+                </div>
+                <button class="lcm-btn" id="gcf-calc">Calculate GCF</button>
+                <div class="lcm-result" id="gcf-result">GCF = 12</div>
+                <div class="lcm-detail" id="gcf-detail"></div>
+            </div>
+        </section>
+
+        <!-- Matrix Calculator -->
+        <section id="mode-matrix" class="mode-section">
+            <div class="calculator-body">
+                <h3 style="font-size:0.9rem;font-weight:600;margin-bottom:12px;color:var(--accent-blue);">Matrix Calculator</h3>
+                <div class="matrix-controls">
+                    <span style="font-size:0.8rem;color:var(--text-secondary);">Size:</span>
+                    <select id="mat-size">
+                        <option value="2">2 × 2</option>
+                        <option value="3">3 × 3</option>
+                    </select>
+                    <button id="mat-random" style="background:rgba(0,191,255,0.3);">Random</button>
+                    <button id="mat-clear" style="background:rgba(220,20,60,0.4);">Clear</button>
+                </div>
+                <div class="matrix-tables" id="mat-tables"></div>
+                <div class="matrix-op-row" id="mat-ops">
+                    <button class="active-op" data-matop="+">A + B</button>
+                    <button data-matop="-">A − B</button>
+                    <button data-matop="*">A × B</button>
+                    <button data-matop="detA">det(A)</button>
+                    <button data-matop="detB">det(B)</button>
+                    <button data-matop="transA">Aᵀ</button>
+                    <button data-matop="transB">Bᵀ</button>
+                </div>
+                <div class="matrix-result" id="mat-result"><span class="mr-label">Result</span><div class="mr-val" id="mat-result-val"></div></div>
+            </div>
+        </section>
+
+        <!-- Big Number Calculator -->
+        <section id="mode-bignum" class="mode-section">
+            <div class="calculator-body">
+                <h3 style="font-size:0.9rem;font-weight:600;margin-bottom:12px;color:var(--accent-blue);">Big Number Calculator</h3>
+                <div class="bn-inp">
+                    <div class="bn-row"><label>X</label><input type="text" id="bn-x" value="12345678901234567890" spellcheck="false"></div>
+                    <div class="bn-row"><label>Y</label><input type="text" id="bn-y" value="9876543210987654321" spellcheck="false"></div>
+                </div>
+                <div class="bn-ops">
+                    <button class="active-op" data-bnop="+">+</button>
+                    <button data-bnop="-">−</button>
+                    <button data-bnop="*">×</button>
+                    <button data-bnop="/">÷</button>
+                    <button data-bnop="pow">Xʸ</button>
+                    <button data-bnop="sqrt">√X</button>
+                    <button data-bnop="fact">X!</button>
+                    <button data-bnop="mod">MOD</button>
+                    <button data-bnop="gcd">GCD</button>
+                    <button data-bnop="lcm">LCM</button>
+                </div>
+                <div class="bn-result" id="bn-result">22222222222222222211</div>
             </div>
         </section>
     </main>
@@ -2869,6 +3051,287 @@ class LogCalculator {
 }
 
 // ============================================================
+// ROUNDING CALCULATOR
+// ============================================================
+class RoundingCalculator {
+    constructor() {
+        this.mode = 'half-up';
+        this.num = document.getElementById('rd-num');
+        this.prec = document.getElementById('rd-prec');
+        this.result = document.getElementById('rd-result');
+        this.init();
+    }
+    init() {
+        document.querySelectorAll('#mode-rounding .rd-mode button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('#mode-rounding .rd-mode button').forEach(b => b.classList.remove('active-op'));
+                btn.classList.add('active-op');
+                this.mode = btn.dataset.rdmode;
+                this.calc();
+            });
+        });
+        [this.num, this.prec].forEach(el => el.addEventListener('input', () => this.calc()));
+        this.calc();
+    }
+    calc() {
+        let val = parseFloat(this.num.value);
+        const prec = parseInt(this.prec.value);
+        if (isNaN(val)) { this.result.textContent = 'Enter a valid number'; return; }
+        const factor = Math.pow(10, prec);
+        const absVal = Math.abs(val);
+        const sign = val < 0 ? -1 : 1;
+        let rounded;
+        switch (this.mode) {
+            case 'half-up':
+                rounded = sign * Math.floor(absVal * factor + 0.5) / factor;
+                break;
+            case 'half-down':
+                const frac = absVal * factor;
+                const floorVal = Math.floor(frac);
+                rounded = sign * (frac - floorVal === 0.5 ? floorVal : Math.round(frac)) / factor;
+                break;
+            case 'ceil': rounded = Math.ceil(val * factor) / factor; break;
+            case 'floor': rounded = Math.floor(val * factor) / factor; break;
+            case 'even':
+                const f = absVal * factor;
+                const fl = Math.floor(f);
+                const fr = f - fl;
+                if (fr === 0.5) { rounded = sign * (fl % 2 === 0 ? fl : fl + 1) / factor; }
+                else { rounded = sign * Math.round(f) / factor; }
+                break;
+            case 'odd':
+                const f2 = absVal * factor;
+                const fl2 = Math.floor(f2);
+                const fr2 = f2 - fl2;
+                if (fr2 === 0.5) { rounded = sign * (fl2 % 2 !== 0 ? fl2 : fl2 + 1) / factor; }
+                else { rounded = sign * Math.round(f2) / factor; }
+                break;
+            case 'away':
+                rounded = sign * (Math.floor(absVal * factor + 0.5)) / factor;
+                break;
+            case 'toward':
+                const ft = absVal * factor;
+                const flt = Math.floor(ft);
+                rounded = sign * (ft - flt === 0.5 ? flt : Math.round(ft)) / factor;
+                break;
+        }
+        const precStr = Math.max(0, prec).toString();
+        this.result.textContent = rounded.toFixed(Math.max(0, prec));
+    }
+}
+
+// ============================================================
+// LCM CALCULATOR
+// ============================================================
+class LCMCalculator {
+    constructor() {
+        this.input = document.getElementById('lcm-nums');
+        this.result = document.getElementById('lcm-result');
+        this.detail = document.getElementById('lcm-detail');
+        this.init();
+    }
+    init() {
+        document.getElementById('lcm-calc').addEventListener('click', () => this.calc());
+        this.input.addEventListener('keydown', (e) => { if (e.key === 'Enter') this.calc(); });
+        this.calc();
+    }
+    gcd(a, b) { while (b) { [a, b] = [b, a % b]; } return Math.abs(a); }
+    calc() {
+        const nums = this.input.value.split(',').map(s => parseInt(s.trim())).filter(n => !isNaN(n) && n > 0);
+        if (nums.length < 2) { this.result.textContent = 'Enter at least 2 positive integers'; this.detail.textContent = ''; return; }
+        let l = nums[0];
+        for (let i = 1; i < nums.length; i++) { l = Math.abs(l * nums[i]) / this.gcd(l, nums[i]); }
+        this.result.textContent = 'LCM = ' + (Number.isInteger(l) ? l.toString() : l.toPrecision(10));
+        this.detail.textContent = 'Numbers: ' + nums.join(', ');
+    }
+}
+
+// ============================================================
+// GCF CALCULATOR
+// ============================================================
+class GCFCalculator {
+    constructor() {
+        this.input = document.getElementById('gcf-nums');
+        this.result = document.getElementById('gcf-result');
+        this.detail = document.getElementById('gcf-detail');
+        this.init();
+    }
+    init() {
+        document.getElementById('gcf-calc').addEventListener('click', () => this.calc());
+        this.input.addEventListener('keydown', (e) => { if (e.key === 'Enter') this.calc(); });
+        this.calc();
+    }
+    gcd(a, b) { while (b) { [a, b] = [b, a % b]; } return Math.abs(a); }
+    calc() {
+        const nums = this.input.value.split(',').map(s => parseInt(s.trim())).filter(n => !isNaN(n) && n > 0);
+        if (nums.length < 2) { this.result.textContent = 'Enter at least 2 positive integers'; this.detail.textContent = ''; return; }
+        let g = nums[0];
+        for (let i = 1; i < nums.length; i++) { g = this.gcd(g, nums[i]); }
+        this.result.textContent = 'GCF = ' + g;
+        this.detail.textContent = 'Numbers: ' + nums.join(', ');
+    }
+}
+
+// ============================================================
+// MATRIX CALCULATOR
+// ============================================================
+class MatrixCalculator {
+    constructor() {
+        this.size = 2;
+        this.op = '+';
+        this.tableContainer = document.getElementById('mat-tables');
+        this.resultVal = document.getElementById('mat-result-val');
+        this.init();
+    }
+    init() {
+        document.getElementById('mat-size').addEventListener('change', (e) => {
+            this.size = parseInt(e.target.value);
+            this.build();
+        });
+        document.getElementById('mat-random').addEventListener('click', () => this.randomize());
+        document.getElementById('mat-clear').addEventListener('click', () => this.clearAll());
+        document.querySelectorAll('#mode-matrix .matrix-op-row button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('#mode-matrix .matrix-op-row button').forEach(b => b.classList.remove('active-op'));
+                btn.classList.add('active-op');
+                this.op = btn.dataset.matop;
+                this.calc();
+            });
+        });
+        this.build();
+    }
+    build() {
+        const n = this.size;
+        this.tableContainer.innerHTML = `
+            <div class="mt-group"><label>Matrix A</label><table id="mat-a">${this.makeGrid(n)}</table></div>
+            <div class="mt-group"><label>Matrix B</label><table id="mat-b">${this.makeGrid(n)}</table></div>
+        `;
+        this.aInputs = this.tableContainer.querySelectorAll('#mat-a input');
+        this.bInputs = this.tableContainer.querySelectorAll('#mat-b input');
+        [...this.aInputs, ...this.bInputs].forEach(el => el.addEventListener('input', () => this.calc()));
+        this.setDefault();
+    }
+    makeGrid(n) {
+        let h = '';
+        for (let r = 0; r < n; r++) { h += '<tr>'; for (let c = 0; c < n; c++) { h += `<td><input type="number" value="0"></td>`; } h += '</tr>'; }
+        return h;
+    }
+    setDefault() {
+        const a = [[1,2],[3,4]]; const b = [[5,6],[7,8]];
+        if (this.size === 3) { a.push([9,10,11]); b.push([12,13,14]); a[0].push(0); a[1].push(0); b[0].push(0); b[1].push(0); }
+        [...this.aInputs].forEach((el, i) => { const r = Math.floor(i / this.size), c = i % this.size; el.value = (a[r] && a[r][c] !== undefined) ? a[r][c] : 0; });
+        [...this.bInputs].forEach((el, i) => { const r = Math.floor(i / this.size), c = i % this.size; el.value = (b[r] && b[r][c] !== undefined) ? b[r][c] : 0; });
+        this.calc();
+    }
+    readMatrix(inputs) { const n = this.size; const m = []; for (let r = 0; r < n; r++) { m[r] = []; for (let c = 0; c < n; c++) { m[r][c] = parseFloat(inputs[r * n + c].value) || 0; } } return m; }
+    writeMatrix(inputs, m) { const n = this.size; inputs.forEach((el, i) => { const r = Math.floor(i / n), c = i % n; el.value = m[r][c]; }); }
+    formatMatrix(m) { return m.map(r => '[' + r.map(v => parseFloat(v.toPrecision(6)).toString()).join(', ') + ']').join('\n'); }
+    randomize() { const n = this.size; [...this.aInputs].forEach(el => el.value = Math.floor(Math.random() * 10 - 5)); [...this.bInputs].forEach(el => el.value = Math.floor(Math.random() * 10 - 5)); this.calc(); }
+    clearAll() { [...this.aInputs, ...this.bInputs].forEach(el => el.value = '0'); this.calc(); }
+    det(m) {
+        const n = m.length;
+        if (n === 1) return m[0][0];
+        if (n === 2) return m[0][0] * m[1][1] - m[0][1] * m[1][0];
+        let d = 0;
+        for (let c = 0; c < n; c++) {
+            const sub = [];
+            for (let r = 1; r < n; r++) { sub.push(m[r].filter((_, i) => i !== c)); }
+            d += (c % 2 === 0 ? 1 : -1) * m[0][c] * this.det(sub);
+        }
+        return d;
+    }
+    transpose(m) { const n = m.length; const t = []; for (let r = 0; r < n; r++) { t[r] = []; for (let c = 0; c < n; c++) { t[r][c] = m[c][r]; } } return t; }
+    calc() {
+        const n = this.size;
+        const A = this.readMatrix(this.aInputs);
+        const B = this.readMatrix(this.bInputs);
+        let result;
+        switch (this.op) {
+            case '+': result = A.map((r, i) => r.map((v, j) => v + B[i][j])); break;
+            case '-': result = A.map((r, i) => r.map((v, j) => v - B[i][j])); break;
+            case '*': result = A.map((r, i) => B[0].map((_, j) => r.reduce((s, v, k) => s + v * B[k][j], 0))); break;
+            case 'detA': this.resultVal.textContent = 'det(A) = ' + this.det(A); return;
+            case 'detB': this.resultVal.textContent = 'det(B) = ' + this.det(B); return;
+            case 'transA': result = this.transpose(A); break;
+            case 'transB': result = this.transpose(B); break;
+        }
+        this.resultVal.textContent = this.formatMatrix(result);
+    }
+}
+
+// ============================================================
+// BIG NUMBER CALCULATOR
+// ============================================================
+class BigNumberCalculator {
+    constructor() {
+        this.op = '+';
+        this.x = document.getElementById('bn-x');
+        this.y = document.getElementById('bn-y');
+        this.result = document.getElementById('bn-result');
+        this.init();
+    }
+    init() {
+        document.querySelectorAll('#mode-bignum .bn-ops button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('#mode-bignum .bn-ops button').forEach(b => b.classList.remove('active-op'));
+                btn.classList.add('active-op');
+                this.op = btn.dataset.bnop;
+                this.calc();
+            });
+        });
+        [this.x, this.y].forEach(el => el.addEventListener('input', () => this.calc()));
+        this.calc();
+    }
+    parse(v) { 
+        try { 
+            v = v.trim().toLowerCase();
+            if (v.includes('e')) { 
+                let parts = v.split('e');
+                let base = BigInt(parts[0].replace('.', ''));
+                let exp = parseInt(parts[1]) - (parts[0].includes('.') ? parts[0].split('.')[1].length : 0);
+                if (exp >= 0) return base * 10n ** BigInt(exp);
+                return base / (10n ** BigInt(-exp));
+            }
+            return BigInt(v.replace(/\s/g, '')); 
+        } catch(e) { return 0n; }
+    }
+    fmt(n) {
+        if (typeof n === 'bigint') return n.toString();
+        return n;
+    }
+    gcd(a, b) { a = a < 0n ? -a : a; b = b < 0n ? -b : b; while (b) { [a, b] = [b, a % b]; } return a; }
+    calc() {
+        let X, Y;
+        try { X = this.parse(this.x.value); } catch(e) { X = 0n; }
+        try { Y = this.parse(this.y.value); } catch(e) { Y = 0n; }
+        let r;
+        try {
+            switch (this.op) {
+                case '+': r = X + Y; break;
+                case '-': r = X - Y; break;
+                case '*': r = X * Y; break;
+                case '/': r = Y !== 0n ? X / Y : 'Error: Division by zero'; break;
+                case 'mod': r = Y !== 0n ? X % Y : 'Error: Mod by zero'; break;
+                case 'pow': 
+                    if (Y < 0n || Y > 100n) { r = 'Error: exponent 0-100'; break; }
+                    r = 1n; for (let i = 0n; i < Y; i++) r *= X; break;
+                case 'sqrt':
+                    if (X < 0n) { r = 'Error: negative sqrt'; break; }
+                    if (X === 0n) { r = 0n; break; }
+                    r = X; let s = (X + 1n) / 2n; while (s < r) { r = s; s = (s + X / s) / 2n; } break;
+                case 'fact':
+                    if (X < 0n) { r = 'Error: negative factorial'; break; }
+                    if (X > 1000n) { r = 'Error: too large'; break; }
+                    r = 1n; for (let i = 2n; i <= X; i++) r *= i; break;
+                case 'gcd': r = this.gcd(X, Y); break;
+                case 'lcm': r = Y !== 0n ? X / this.gcd(X, Y) * Y : 0n; break;
+            }
+        } catch(e) { r = 'Error'; }
+        this.result.textContent = this.fmt(r);
+    }
+}
+
+// ============================================================
 // APP - Navigation Controller
 // ============================================================
 class App {
@@ -2887,6 +3350,11 @@ class App {
         this.halflife = new HalfLifeCalculator();
         this.quadratic = new QuadraticCalculator();
         this.logcalc = new LogCalculator();
+        this.rounding = new RoundingCalculator();
+        this.lcmcalc = new LCMCalculator();
+        this.gcfcalc = new GCFCalculator();
+        this.matrix = new MatrixCalculator();
+        this.bignum = new BigNumberCalculator();
     }
 
     initNav() {
