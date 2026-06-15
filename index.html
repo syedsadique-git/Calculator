@@ -101,8 +101,12 @@ body::after {
     flex: 1; overflow-y: auto; padding: 24px;
     display: flex; align-items: flex-start; justify-content: center;
 }
-.mode-section { display: none; width: 100%; max-width: 520px; }
+.mode-section { display: none; width: 100%; }
 .mode-section.active { display: block; }
+#mode-normal, #mode-scientific { max-width: 500px; }
+#mode-graph { max-width: 640px; }
+#mode-units { max-width: 520px; }
+#mode-precision { max-width: 480px; }
 
 /* Calculator Shared */
 .calculator-body {
@@ -153,12 +157,17 @@ button.active-key { transform: scale(0.95); box-shadow: 0 0 20px rgba(138,43,226
 .btn-warn { background: rgba(255,165,0,0.4); }
 
 /* Scientific Calculator */
-.scientific-section { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-bottom: 10px; }
-.scientific-section button { font-size: 0.8rem; padding: 12px 4px; }
+#mode-scientific .calculator-body { padding: 14px; }
+#mode-scientific .display { padding: 12px 14px; min-height: 80px; margin-bottom: 12px; }
+#mode-scientific .result { font-size: 2rem; }
+#mode-scientific .expression { font-size: 0.85rem; }
+.scientific-section { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; margin-bottom: 8px; }
+.scientific-section button { font-size: 0.72rem; padding: 8px 2px; }
 .btn-sci { background: rgba(0,100,120,0.5); }
 .btn-sci:hover { box-shadow: 0 4px 16px rgba(0,191,255,0.4); }
 .btn-mem { background: rgba(255,165,0,0.4); }
-.standard-section { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+#mode-scientific .standard-section { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; }
+#mode-scientific .standard-section button { font-size: 0.8rem; padding: 10px 4px; }
 .span-2 { grid-column: span 2; }
 
 /* Graph Calculator */
@@ -293,8 +302,13 @@ button.active-key { transform: scale(0.95); box-shadow: 0 0 20px rgba(138,43,226
     .nav-icon { width: 24px; height: 24px; font-size: 0.65rem; }
     .main-content { padding: 12px; }
     .calculator-body { padding: 12px; border-radius: 12px; }
-    .scientific-section { gap: 4px; }
-    .scientific-section button { font-size: 0.65rem; padding: 8px 2px; }
+    #mode-scientific .calculator-body { padding: 10px; }
+    #mode-scientific .display { padding: 10px; min-height: 60px; }
+    #mode-scientific .result { font-size: 1.5rem; }
+    .scientific-section { gap: 3px; margin-bottom: 6px; }
+    .scientific-section button { font-size: 0.6rem; padding: 6px 1px; }
+    #mode-scientific .standard-section { gap: 4px; }
+    #mode-scientific .standard-section button { font-size: 0.7rem; padding: 8px 3px; }
     .precision-display .result-text { font-size: 1rem; }
 }
 </style>
@@ -309,7 +323,7 @@ button.active-key { transform: scale(0.95); box-shadow: 0 0 20px rgba(138,43,226
         <nav class="sidebar-nav">
             <a class="nav-item active" data-mode="normal">
                 <div class="nav-icon">#</div>
-                <span>Normal</span>
+                <span>Basic</span>
             </a>
             <a class="nav-item" data-mode="scientific">
                 <div class="nav-icon">sin</div>
