@@ -49,6 +49,12 @@ body::after {
     50% { transform: scale(1.2); opacity: 0.8; }
 }
 
+#bg-canvas {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0; pointer-events: none;
+    display: block;
+}
+
 .app { display: flex; height: 100vh; position: relative; z-index: 1; }
 
 /* Sidebar */
@@ -567,6 +573,7 @@ button.active-key { transform: scale(0.95); box-shadow: 0 0 20px rgba(138,43,226
 </style>
 </head>
 <body>
+<canvas id="bg-canvas"></canvas>
 <div class="app">
     <button class="show-sidebar-btn" id="show-sidebar" title="Show sidebar">☰</button>
     <aside class="sidebar">
@@ -3677,7 +3684,105 @@ class App {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => { new App(); });
+// ============================================================
+// ANIMATED BACKGROUND
+// ============================================================
+class BgAnim {
+    constructor() {
+        this.canvas = document.getElementById('bg-canvas');
+        this.ctx = this.canvas.getContext('2d');
+        this.particles = [];
+        this.mouse = { x: -9999, y: -9999 };
+        this.resize();
+        window.addEventListener('resize', () => this.resize());
+        window.addEventListener('mousemove', e => { this.mouse.x = e.clientX; this.mouse.y = e.clientY; });
+        window.addEventListener('touchmove', e => {
+            const t = e.touches[0];
+            this.mouse.x = t.clientX; this.mouse.y = t.clientY;
+        }, { passive: true });
+        this.init();
+        this.animate();
+    }
+
+    resize() {
+        this.w = window.innerWidth;
+        this.h = window.innerHeight;
+        this.canvas.width = this.w;
+        this.canvas.height = this.h;
+    }
+
+    init() {
+        const count = Math.min(80, Math.floor(this.w * this.h / 15000));
+        for (let i = 0; i < count; i++) {
+            this.particles.push({
+                x: Math.random() * this.w,
+                y: Math.random() * this.h,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5 - 0.2,
+                r: 1.5 + Math.random() * 2.5,
+                hue: 220 + Math.random() * 80,
+                alpha: 0.15 + Math.random() * 0.35,
+            });
+        }
+    }
+
+    animate() {
+        this.ctx.clearRect(0, 0, this.w, this.h);
+        const p = this.particles;
+        for (let i = 0; i < p.length; i++) {
+            const a = p[i];
+            a.x += a.vx;
+            a.y += a.vy;
+            if (a.x < -20) a.x = this.w + 20;
+            if (a.x > this.w + 20) a.x = -20;
+            if (a.y < -20) a.y = this.h + 20;
+            if (a.y > this.h + 20) a.y = -20;
+            // mouse repulsion
+            const dx = this.mouse.x - a.x;
+            const dy = this.mouse.y - a.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 120) {
+                const force = (120 - dist) / 120 * 0.8;
+                a.x -= dx / dist * force;
+                a.y -= dy / dist * force;
+            }
+            // draw particle
+            const grad = this.ctx.createRadialGradient(a.x, a.y, 0, a.x, a.y, a.r * 4);
+            grad.addColorStop(0, `hsla(${a.hue}, 80%, 65%, ${a.alpha})`);
+            grad.addColorStop(1, `hsla(${a.hue}, 80%, 65%, 0)`);
+            this.ctx.beginPath();
+            this.ctx.arc(a.x, a.y, a.r * 4, 0, Math.PI * 2);
+            this.ctx.fillStyle = grad;
+            this.ctx.fill();
+            this.ctx.beginPath();
+            this.ctx.arc(a.x, a.y, a.r * 0.6, 0, Math.PI * 2);
+            this.ctx.fillStyle = `hsla(${a.hue}, 60%, 85%, ${a.alpha * 0.6})`;
+            this.ctx.fill();
+            // connections
+            for (let j = i + 1; j < p.length; j++) {
+                const b = p[j];
+                const cdx = a.x - b.x;
+                const cdy = a.y - b.y;
+                const cd = Math.sqrt(cdx * cdx + cdy * cdy);
+                if (cd < 100) {
+                    const ca = (1 - cd / 100) * 0.08;
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(a.x, a.y);
+                    this.ctx.lineTo(b.x, b.y);
+                    this.ctx.strokeStyle = `hsla(230, 50%, 60%, ${ca})`;
+                    this.ctx.lineWidth = 0.6;
+                    this.ctx.stroke();
+                }
+            }
+        }
+        this.raf = requestAnimationFrame(() => this.animate());
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    new BgAnim();
+    new App();
+});
 </script>
 </body>
 </html>
